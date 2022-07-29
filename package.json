@@ -13,5 +13,9 @@
   "license": "MIT",
   "devDependencies": {
     "rescript": "^9.1.4"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

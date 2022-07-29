@@ -1,2 +1,1 @@
 
-Js.log("Hello, ReScript")
