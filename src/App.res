@@ -1,7 +1,13 @@
 module App = {
   @react.component
   let make = () => {
-    open React
-    <div> {"testing"->string} </div>
+    let url = RescriptReactRouter.useUrl()
+
+    switch url.path {
+    | list{"user"} => <Switchback />
+    | list{"about"} => <Switchback />
+    | list{} | list{"home"} => <Home />
+    | _ => <PageNotFound />
+    }
   }
 }

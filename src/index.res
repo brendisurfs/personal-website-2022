@@ -1,5 +1,3 @@
-open React
-open ReactDOM
 open App
 
 switch ReactDOM.querySelector("#root") {
