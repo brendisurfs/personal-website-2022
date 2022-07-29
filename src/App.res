@@ -5,8 +5,8 @@ module App = {
 
     switch url.path {
     | list{} | list{"home"} => <Home />
-    | list{"user"} => <Switchback />
-    | list{"about"} => <Switchback />
+    | list{"writing"} => <Writing />
+    | list{"about"} => <About />
     | _ => <PageNotFound />
     }
   }
