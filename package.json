@@ -15,6 +15,7 @@
     "rescript": "^9.1.4"
   },
   "dependencies": {
+    "@emotion/css": "^11.9.0",
     "@rescript/react": "^0.10.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

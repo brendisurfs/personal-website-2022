@@ -6,8 +6,13 @@ let changeUrl = url => {
 let make = () => {
   let topbarList = ["home", "about", "writing"]
 
+  open NavbarStyles
   let navItems = Belt.Array.map(topbarList, l => {
-    <button onClick={_e => changeUrl(l)} key={l}> {l->React.string} </button>
+    <button className={navButton} onClick={_e => changeUrl(l)} key={l}> {l->React.string} </button>
   })
-  <nav> {React.array(navItems)} </nav>
+
+  <nav className={navbarContainer}>
+    <h1 className={navTitleStyle}> {"Brendancreates"->React.string} </h1>
+    <div className={navButtonWrapper}> {React.array(navItems)} </div>
+  </nav>
 }
