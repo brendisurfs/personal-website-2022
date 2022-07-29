@@ -2,6 +2,7 @@
   "name": "new-website-rescript",
   "version": "0.1.0",
   "scripts": {
+    "dev": "yarn watch && vite",
     "clean": "rescript clean",
     "build": "rescript build",
     "watch": "rescript build -w"
@@ -15,7 +16,9 @@
     "rescript": "^9.1.4"
   },
   "dependencies": {
+    "@rescript/react": "^0.10.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
 }
+
