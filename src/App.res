@@ -4,9 +4,9 @@ module App = {
     let url = RescriptReactRouter.useUrl()
 
     switch url.path {
+    | list{} | list{"home"} => <Home />
     | list{"user"} => <Switchback />
     | list{"about"} => <Switchback />
-    | list{} | list{"home"} => <Home />
     | _ => <PageNotFound />
     }
   }
