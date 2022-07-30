@@ -25,3 +25,5 @@ lib/bs
 .merlin
 .bsb.lock
 /node_modules/
+graphql_schema.json
+bun.lockb
