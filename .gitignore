@@ -27,3 +27,4 @@ lib/bs
 /node_modules/
 graphql_schema.json
 bun.lockb
+/lib/
