@@ -18,7 +18,6 @@
     "wonka": "5.0.0-rc.1"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.9",
     "@emotion/css": "^11.9.0",
     "@reasonml-community/graphql-ppx": "^1.2.3",
     "@rescript/react": "^0.10.3",
@@ -27,8 +26,6 @@
     "graphql": "^16.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rescript-apollo-client": "^3.1.0",
     "urql": "^2.2.3"
   }
 }
-

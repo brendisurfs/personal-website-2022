@@ -1,5 +1,3 @@
 open React
 @react.component
-let make = () => {
-  <div> {"page not found"->string} </div>
-}
+let make = () => <div> {"404: page not found"->string} </div>
