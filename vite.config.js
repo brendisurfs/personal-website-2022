@@ -1,13 +1,7 @@
-import { defineConfig } from "vite";
-const path = require("path");
+import { defineConfig } from "vite"
 
 export default defineConfig({
-	define: {
-		"process.env": process.env,
-	},
-	resolve: {
-		alias: {
-			"@": path.resolve(__dirname, "./lib"),
-		},
-	},
-});
+  define: {
+    "process.env": process.env,
+  },
+})
