@@ -6,6 +6,7 @@
     "subdirs": true
   },
   "suffix": ".bs.js",
+  "warnings": { "error": true, "number": "5" },
 
   "package-specs": [{ "module": "es6", "in-source": false }],
   "reason": { "react-jsx": 3 },
@@ -14,8 +15,6 @@
     "@davesnx/styled-ppx/ppx"
   ],
   "bs-dependencies": [
-    "wonka",
-    "@urql/rescript",
     "@rescript/react",
     "rescript-apollo-client",
     "@reasonml-community/graphql-ppx"
