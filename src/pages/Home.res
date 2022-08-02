@@ -11,5 +11,5 @@ let make = () => {
   | {data: None, error: None, loading: false} => "No data? no projects? This seems weird"->string
   }
   // -- view
-  <Layout> <pre> {homepageRes} </pre> </Layout>
+  <Layout> <div> {homepageRes} </div> </Layout>
 }

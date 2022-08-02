@@ -104,7 +104,7 @@
     source-map "^0.5.7"
     stylis "4.0.13"
 
-"@emotion/cache@^11.10.0":
+"@emotion/cache@^11.0.0", "@emotion/cache@^11.10.0":
   version "11.10.1"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-11.10.1.tgz#75a157c2a6bb9220450f73ebef1df2e1467dc65d"
   integrity sha512-uZTj3Yz5D69GE25iFZcIQtibnVCFsc/6+XIozyL3ycgWvEdif2uEw9wlUt6umjLr4Keg9K6xRPHmD8LGi+6p1A==
@@ -115,7 +115,7 @@
     "@emotion/weak-memoize" "^0.3.0"
     stylis "4.0.13"
 
-"@emotion/css@^11.9.0":
+"@emotion/css@^11.0.0", "@emotion/css@^11.9.0":
   version "11.10.0"
   resolved "https://registry.yarnpkg.com/@emotion/css/-/css-11.10.0.tgz#270b4fdf2419e59cb07081d0e9f7940d88b8b443"
   integrity sha512-dH9f+kSCucc8ilMg0MUA1AemabcyzYpe5EKX24F528PJjD7HyIY/VBNJHxfUdc8l400h2ncAjR6yEDu+DBj2cg==
@@ -230,6 +230,20 @@ babel-plugin-macros@^3.1.0:
     "@babel/runtime" "^7.12.5"
     cosmiconfig "^7.0.0"
     resolve "^1.19.0"
+
+bs-css-emotion@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/bs-css-emotion/-/bs-css-emotion-4.3.0.tgz#283ca6d4830f5be49b5ba1df7bd314b991a5ca77"
+  integrity sha512-yViPFDOOPDUbhPgMVj4uT1j6HFvJTsjvhNh98Ufc3YmKW4pEH34nWiOwcYad2fWXpL77Jt9tNQB7yQgLSE3TPg==
+  dependencies:
+    "@emotion/cache" "^11.0.0"
+    "@emotion/css" "^11.0.0"
+    bs-css "15.3.0"
+
+bs-css@15.3.0, bs-css@^15.3.0:
+  version "15.3.0"
+  resolved "https://registry.yarnpkg.com/bs-css/-/bs-css-15.3.0.tgz#c497bf959cc86b8e535addfd6d16f74001f47374"
+  integrity sha512-Y/I2G4a4xLb9aqd1Qhx9Tae9J1DBM2eqSMET7iLwuiSdt8PaT6InnaDgLk9f0hGk/9O/6CCpZ/xlntVf+ZSkLQ==
 
 callsites@^3.0.0:
   version "3.1.0"
