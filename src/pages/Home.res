@@ -1,4 +1,4 @@
-open Layout
+// open Layout
 open ReScriptUrql
 
 module HomeQuery = %graphql(`
@@ -14,7 +14,17 @@ module HomeQuery = %graphql(`
 let make = () => {
   // -- data
   let ({Hooks.response: response}, executeQuery) = Hooks.useQuery(~query=module(HomeQuery), ())
+  let res = switch response {
+  | Fetching => "fetching"
+  | Data(d)
+  | PartialData(d, _) =>
+    d.allComponentProjects->Js.String.make
+  | Error(e) => e->Js.String.make
+  | Empty => "empty!"
+  }
+
   // -- view
   open React
-  <Layout> <div> {"Home page"->string} </div> </Layout>
+  <pre> {res->string} </pre>
+  // <Layout> <div> {"Home page"->string} </div> </Layout>
 }

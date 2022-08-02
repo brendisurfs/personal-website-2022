@@ -7,9 +7,9 @@
   },
   "suffix": ".bs.js",
 
-  "ppx-flags": ["@reasonml-community/graphql-ppx/ppx"],
   "package-specs": [{ "module": "es6", "in-source": false }],
   "reason": { "react-jsx": 3 },
+  "ppx-flags": ["@reasonml-community/graphql-ppx/ppx"],
   "bs-dependencies": [
     "wonka",
     "@urql/rescript",
