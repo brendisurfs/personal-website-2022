@@ -29,4 +29,3 @@ graphql_schema.json
 bun.lockb
 /lib/
 update_schema.sh
-graphql_schema.json
