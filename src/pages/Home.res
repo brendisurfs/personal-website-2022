@@ -7,7 +7,7 @@ let make = () => {
   let homepageRes = switch HomeQuery.use() {
   | {loading: true} => "loading..."->string
   | {error: Some(_error)} => "Error loading projects :/"->string
-  | {data: Some({projects})} => <div> <ProjectGrid projects /> </div>
+  | {data: Some({workProjects})} => <div> <ProjectGrid workProjects /> </div>
   | {data: None, error: None, loading: false} => "No data? no projects? This seems weird"->string
   }
   // -- view

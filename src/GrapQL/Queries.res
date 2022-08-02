@@ -1,6 +1,6 @@
 module HomeQuery = %graphql(`
 query HomeQuery {
-  allComponentProjectLists {
+  workProjects: allComponentProjectLists {
     id
     projectType
     projects {
