@@ -1,3 +1,4 @@
+open Env
 open Layout
 
 /* module HomeQuery = %graphql(` */
@@ -8,6 +9,7 @@ open Layout
 /* } */
 /* } */
 /* `) */
+Js.log(datoKey)
 
 @react.component
 let make = () => {

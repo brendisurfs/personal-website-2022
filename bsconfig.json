@@ -1,32 +1,31 @@
 {
-  "name": "new-website-rescript",
-  "version": "0.1.0",
-  "sources": {
-    "dir": "src",
-    "subdirs": true
-  },
-  "suffix": ".bs.js",
-  "warnings": { "error": true, "number": "5" },
+	"name": "new-website-rescript",
+	"version": "0.1.0",
+	"sources": {
+		"dir": "src",
+		"subdirs": true
+	},
+	"suffix": ".bs.js",
 
-  "package-specs": [{ "module": "es6", "in-source": false }],
-  "reason": { "react-jsx": 3 },
-  "ppx-flags": [
-    "@reasonml-community/graphql-ppx/ppx",
-    "@davesnx/styled-ppx/ppx"
-  ],
-  "bs-dependencies": [
-    "@rescript/react",
-    "rescript-apollo-client",
-    "@reasonml-community/graphql-ppx"
-  ],
-  "graphql": {
-    "apolloMode": true,
-    "extendMutation": "ApolloClient.GraphQL_PPX.ExtendMutation",
-    "extendQuery": "ApolloClient.GraphQL_PPX.ExtendQuery",
-    "extendSubscription": "ApolloClient.GraphQL_PPX.ExtendSubscription",
-    "templateTagReturnType": "ApolloClient.GraphQL_PPX.templateTagReturnType",
-    "templateTagIsFunction": true,
-    "templateTagImport": "gql",
-    "templateTagLocation": "@apollo/client"
-  }
+	"package-specs": [{ "module": "es6", "in-source": false }],
+	"reason": { "react-jsx": 3 },
+	"ppx-flags": [
+		"@reasonml-community/graphql-ppx/ppx",
+		"@davesnx/styled-ppx/ppx"
+	],
+	"bs-dependencies": [
+		"@rescript/react",
+		"rescript-apollo-client",
+		"@reasonml-community/graphql-ppx"
+	],
+	"graphql": {
+		"apolloMode": true,
+		"extendMutation": "ApolloClient.GraphQL_PPX.ExtendMutation",
+		"extendQuery": "ApolloClient.GraphQL_PPX.ExtendQuery",
+		"extendSubscription": "ApolloClient.GraphQL_PPX.ExtendSubscription",
+		"templateTagReturnType": "ApolloClient.GraphQL_PPX.templateTagReturnType",
+		"templateTagIsFunction": true,
+		"templateTagImport": "gql",
+		"templateTagLocation": "@apollo/client"
+	}
 }
