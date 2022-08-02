@@ -1,5 +1,5 @@
-open Apollo
 open App
+open Apollo
 
 switch ReactDOM.querySelector("#root") {
 | Some(root) =>

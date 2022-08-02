@@ -8,7 +8,6 @@ open Layout
 /* } */
 /* } */
 /* `) */
-let rawDatoEnv = %raw(`import.meta.env["VITE_API_DATO"]`)
 
 @react.component
 let make = () => {
