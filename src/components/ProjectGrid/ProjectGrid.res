@@ -1,15 +1,9 @@
 open Queries
+open FilterOption
 open ProjectGridStyles
 
 type projectType = HomeQuery.HomeQuery_inner.t_workProjects_projects
 type workProjects = HomeQuery.HomeQuery_inner.t_workProjects
-
-let filterProjectOption = project => {
-  switch project {
-  | Some(p) => p->React.string
-  | None => ""->React.string
-  }
-}
 
 module ProjectCard = {
   @react.component
