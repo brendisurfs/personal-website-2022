@@ -21,14 +21,6 @@ module ProjectCard = {
   }
 }
 
-module TitleType = %styled.div(`
-  font-weight: bold;
-`)
-module TypeContainer = %styled.div(`
-  display: flex;
-  flex-direction: column;
-`)
-
 module TypeGrid = {
   @react.component
   let make = (~projectType, ~projects: array<projectType>) => {

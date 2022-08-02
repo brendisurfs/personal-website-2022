@@ -13,9 +13,14 @@ query HomeQuery {
 
 `)
 
-/* module AboutQuery = %graphql(` */
-/* query AboutQuery { */
-/* about: */
-/* } */
-/*  */
-/* `) */
+module AboutQuery = %graphql(`
+query AboutPageQuery {
+    allPages(filter:{internalName:{eq:"About Page"}}) {
+    pageTitle
+    pageSubtitle
+    pageText {
+			value
+    }
+  }
+}
+`)
