@@ -13,7 +13,7 @@ module HomeQuery = %graphql(`
 @react.component
 let make = () => {
   // -- data
-  let ({Hooks.response: response}, executeQuery) = Hooks.useQuery(~query=HomeQuery, ())
+  let ({Hooks.response: response}, executeQuery) = Hooks.useQuery(~query=module(HomeQuery), ())
   // -- view
   open React
   <Layout> <div> {"Home page"->string} </div> </Layout>
