@@ -23,6 +23,7 @@
     "extendQuery": "ApolloClient.GraphQL_PPX.ExtendQuery",
     "extendSubscription": "ApolloClient.GraphQL_PPX.ExtendSubscription",
     "templateTagReturnType": "ApolloClient.GraphQL_PPX.templateTagReturnType",
+    "templateTagIsFunction": true,
     "templateTagImport": "gql",
     "templateTagLocation": "@apollo/client"
   }
