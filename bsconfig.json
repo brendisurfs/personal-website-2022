@@ -9,7 +9,10 @@
 
   "package-specs": [{ "module": "es6", "in-source": false }],
   "reason": { "react-jsx": 3 },
-  "ppx-flags": ["@reasonml-community/graphql-ppx/ppx"],
+  "ppx-flags": [
+    "@reasonml-community/graphql-ppx/ppx",
+    "@davesnx/styled-ppx/ppx"
+  ],
   "bs-dependencies": [
     "wonka",
     "@urql/rescript",

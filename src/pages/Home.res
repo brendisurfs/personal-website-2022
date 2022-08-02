@@ -1,13 +1,13 @@
 open Layout
 
-module HomeQuery = %graphql(`
-  query HomeQuery {
-    allComponentProjects {
-      id
-      title
-    }
-  }
-`)
+/* module HomeQuery = %graphql(` */
+/* query HomeQuery { */
+/* allComponentProjects { */
+/* id */
+/* title */
+/* } */
+/* } */
+/* `) */
 
 @react.component
 let make = () => {

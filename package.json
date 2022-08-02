@@ -12,14 +12,17 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "process": "^0.11.10",
     "rescript": "^9.1.4"
   },
   "resolutions": {
-    "wonka": "5.0.0-rc.1"
+    "wonka": "4.0.14"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "@davesnx/styled-ppx": "^0.30.4",
     "@emotion/css": "^11.9.0",
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@reasonml-community/graphql-ppx": "^1.2.3",
     "@rescript/react": "^0.10.3",
     "@urql/rescript": "^4.0.0",
