@@ -1,7 +1,16 @@
 open Queries
 
+type project = HomeQuery.t_projects
+
+/* module ProjectCard = { */
+/* @react.component */
+/* let make = (~project) => { */
+/*  */
+/* } */
+/* } */
+
 @react.component
-let make = (~projects: array<HomeQuery.HomeQuery_inner.t_projects>) => {
+let make = (~projects: array<project>) => {
   let filterProjectOption = project => {
     switch project {
     | Some(p) => p->React.string

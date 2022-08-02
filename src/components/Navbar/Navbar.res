@@ -12,7 +12,9 @@ let make = () => {
   })
 
   <nav className={navbarContainer}>
-    <h1 className={navTitleStyle}> {"Brendancreates"->React.string} </h1>
+    <h1 className={navTitleStyle} onClick={_e => changeUrl("home")}>
+      {"Brendancreates"->React.string}
+    </h1>
     <div className={navButtonWrapper}> {React.array(navItems)} </div>
   </nav>
 }

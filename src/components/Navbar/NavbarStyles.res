@@ -13,6 +13,9 @@ let navTitleStyle = `
   font-weight: bold;
   font-size: 32px;
   color: white;
+  &:hover {
+    cursor: pointer;
+  }
 `->rawCss
 
 let navButtonWrapper = `
@@ -22,6 +25,7 @@ let navButtonWrapper = `
   `->rawCss
 
 let navButton = `
+  text-transform: capitalize;
   &:hover {
     cursor: pointer;
   }
