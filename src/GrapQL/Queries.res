@@ -1,3 +1,4 @@
+// TODO: this needs to be modified.
 module HomeQuery = %graphql(`
 query HomeQuery {
   workProjects: allComponentProjectLists {
