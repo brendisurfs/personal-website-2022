@@ -2,26 +2,18 @@ open Queries
 open FilterOption
 open ProjectGridStyles
 
-type projectType = HomeQuery.HomeQuery_inner.t_workProjects_projects
-type workProjects = HomeQuery.HomeQuery_inner.t_workProjects
-
-module ProjectCard = {
-  @react.component
-  let make = (~project: projectType) => {
-    <CardContainer>
-      <h2> {project.title->filterProjectOption} </h2>
-      <Description> {project.description->filterProjectOption} </Description>
-    </CardContainer>
-  }
-}
+type projectType = ProjectsQuery.ProjectsQuery_inner.t_workProjects_projects
+type workProjects = ProjectsQuery.ProjectsQuery_inner.t_workProjects
 
 module TypeGrid = {
   @react.component
   let make = (~projectType, ~projects: array<projectType>) => {
-    Js.log(projects)
+    open ProjectCardStyles
     <TypeContainer>
-      <TitleType> {projectType->filterProjectOption} </TitleType>
-      <CardGrid> {projects->Belt.Array.map(p => <ProjectCard project=p />)->React.array} </CardGrid>
+      <TitleType> {projectType->filterOption} </TitleType>
+      <div className={cgGrid}>
+        {projects->Belt.Array.map(p => <ProjectCard project=p />)->React.array}
+      </div>
     </TypeContainer>
   }
 }

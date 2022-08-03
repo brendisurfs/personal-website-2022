@@ -3,9 +3,17 @@ open FilterOption
 
 @react.component
 let make = (~data: AboutQuery.AboutQuery_inner.t_about) => {
-  Js.log(data.pageText)
-  <div>
-    <h2> {data.pageTitle->filterProjectOption} </h2>
-    <p> {data.pageSubtitle->filterProjectOption} </p>
+  // -- data
+  open DatoParser
+  let bodyText = render(data.pageText)
+
+  // -- view
+  open PageRecordStyles
+  <div className={PageStyle.container}>
+    <div className={PageStyle.wrapper}>
+      <h2> {data.pageTitle->filterOption} </h2>
+      // NOTE: THIS MUST BE REPLACED BEFORE PROD
+      <div dangerouslySetInnerHTML={"__html": bodyText} />
+    </div>
   </div>
 }

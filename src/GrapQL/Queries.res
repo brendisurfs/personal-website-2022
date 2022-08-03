@@ -10,7 +10,20 @@ query HomeQuery {
     }
   }
 }
+`)
 
+module ProjectsQuery = %graphql(`
+query ProjectsQuery {
+  workProjects: allComponentProjectLists {
+    id
+    projectType
+    projects {
+      id
+      title
+      description
+    }
+  }
+}
 `)
 
 module AboutQuery = %graphql(`

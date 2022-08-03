@@ -4,7 +4,7 @@ let changeUrl = url => {
 
 @react.component
 let make = () => {
-  let topbarList = ["home", "about", "writing"]
+  let topbarList = ["home", "projects", "about", "writing"]
 
   open NavbarStyles
   let navItems = Belt.Array.map(topbarList, l => {
