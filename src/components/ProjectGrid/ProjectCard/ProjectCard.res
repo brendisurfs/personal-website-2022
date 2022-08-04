@@ -12,7 +12,7 @@ module CardImage = {
     | Some(img) =>
       let imageData = img.responsiveImage->Option.getExn
       // FIXME: why doesnt this show child props in the DOM?
-      <DatoImage data=imageData />
+      <DatoImage data=imageData style={"aspectRatio": "1/1"} />
     // if no image, just pass the children
     | _ => "no image"->React.string
     }
