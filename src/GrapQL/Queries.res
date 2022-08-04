@@ -26,6 +26,7 @@ query ProjectsQuery {
         id
         responsiveImage {
           alt
+          src
           base64
           bgColor
           title

@@ -32,6 +32,7 @@
     "gentype": "^4.5.0",
     "graphql": "^16.5.0",
     "react": "^18.2.0",
+    "react-datocms": "^3.0.15",
     "react-dom": "^18.2.0",
     "rescript-apollo-client": "^3.1.0",
     "three": "^0.143.0",
