@@ -6,14 +6,15 @@ open Queries.ProjectsQuery.ProjectsQuery_inner
 // image for card
 module CardImage = {
   @react.component
-  let make = (~image: option<t_workProjects_projects_projectImage>, ~children: React.element) => {
+  let make = (~image: option<t_workProjects_projects_projectImage>) => {
     switch image {
     // if image, wrap the children so the image overlays.
     | Some(img) =>
       let imageData = img.responsiveImage->Option.getExn
-      <DatoImage data=imageData> {children} </DatoImage>
+      // FIXME: why doesnt this show child props in the DOM?
+      <DatoImage data=imageData />
     // if no image, just pass the children
-    | _ => children
+    | _ => "no image"->React.string
     }
   }
 }
@@ -25,8 +26,10 @@ let make = (~project as p: t_workProjects_projects) => {
 
   // card container should be relative
   <div className=Card.cardContainer>
-    <CardImage image=p.projectImage>
-      <h2> {titleText} </h2> <div className=Card.description> {descriptionText} </div>
-    </CardImage>
+    <div className=Card.textContainer>
+      <h2 className=Card.title> {titleText} </h2>
+      <div className=Card.description> {descriptionText} </div>
+    </div>
+    <CardImage image=p.projectImage />
   </div>
 }
