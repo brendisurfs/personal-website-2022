@@ -6,8 +6,8 @@ type projectType = ProjectsQuery.ProjectsQuery_inner.t_workProjects_projects
 
 @react.component
 let make = (~project: projectType) => {
-  <CardContainer>
+  <div className=Card.cardContainer>
     <h2> {project.title->filterOption} </h2>
-    <Description> {project.description->filterOption} </Description>
-  </CardContainer>
+    <div className=Card.description> {project.description->filterOption} </div>
+  </div>
 }

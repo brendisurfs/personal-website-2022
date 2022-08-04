@@ -1,29 +1,20 @@
 open Emotion
 // CARD SECTION
-module CardContainer = %styled.div(`
+module Card = {
+  let cardContainer = `
   display: flex;
   max-width: 100%;
   max-height: 100%;
   flex-direction: column;
   border: 1px solid black;
+`->rawCss
 
-`)
-
-module Description = %styled.div(`
+  let description = `
   display: flex;
   flex-wrap: wrap;
-`)
+`->rawCss
 
-module CardGrid = %styled.div(`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`)
-
-let cgGrid = `
+  let cardGrid = `
   display: grid;
   grid-template-columns: repeat(1, 1fr);
 
@@ -36,3 +27,4 @@ let cgGrid = `
   `)}
 
 `->rawCss
+}

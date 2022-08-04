@@ -11,7 +11,7 @@ module TypeGrid = {
     open ProjectCardStyles
     <div className={typeContainer}>
       <div className={titleType}> {projectType->filterOption} </div>
-      <div className={cgGrid}>
+      <div className={Card.cardGrid}>
         {projects
         ->Belt.Array.map(p => <ProjectCard project=p key={p.title->Belt.Option.getExn} />)
         ->React.array}
