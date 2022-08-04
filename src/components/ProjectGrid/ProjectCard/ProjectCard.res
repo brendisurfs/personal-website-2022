@@ -1,13 +1,11 @@
-open Queries
+open Queries.ProjectsQuery.ProjectsQuery_inner
 open FilterOption
 open ProjectCardStyles
 
-type projectType = ProjectsQuery.ProjectsQuery_inner.t_workProjects_projects
-
 @react.component
-let make = (~project: projectType) => {
+let make = (~project as p: t_workProjects_projects) => {
   <div className=Card.cardContainer>
-    <h2> {project.title->filterOption} </h2>
-    <div className=Card.description> {project.description->filterOption} </div>
+    <h2> {p.title->filterOption} </h2>
+    <div className=Card.description> {p.description->filterOption} </div>
   </div>
 }

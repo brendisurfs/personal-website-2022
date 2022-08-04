@@ -22,6 +22,15 @@ query ProjectsQuery {
       id
       title
       description
+      projectImage {
+        id
+        responsiveImage {
+          alt
+          base64
+          bgColor
+          title
+        }
+      }
     }
   }
 }
