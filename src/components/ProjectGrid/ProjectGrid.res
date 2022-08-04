@@ -9,21 +9,21 @@ module TypeGrid = {
   @react.component
   let make = (~projectType, ~projects: array<projectType>) => {
     open ProjectCardStyles
-    <TypeContainer>
-      <TitleType> {projectType->filterOption} </TitleType>
+    <div className={typeContainer}>
+      <div className={titleType}> {projectType->filterOption} </div>
       <div className={cgGrid}>
         {projects
         ->Belt.Array.map(p => <ProjectCard project=p key={p.title->Belt.Option.getExn} />)
         ->React.array}
       </div>
-    </TypeContainer>
+    </div>
   }
 }
 
 @react.component
 let make = (~workProjects: array<workProjects>) => {
   // -- view
-  <TypeContainer>
+  <div className={typeContainer}>
     {workProjects
     ->Belt.Array.map(proj =>
       <TypeGrid
@@ -33,5 +33,5 @@ let make = (~workProjects: array<workProjects>) => {
       />
     )
     ->React.array}
-  </TypeContainer>
+  </div>
 }

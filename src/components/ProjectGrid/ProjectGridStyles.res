@@ -1,9 +1,12 @@
+open Emotion
+
 // TYPE Section
-module TitleType = %styled.div(`
+let titleType = `
   padding: 2rem 0;
   font-weight: bold;
-`)
-module TypeContainer = %styled.div(`
+`->rawCss
+
+let typeContainer = `
   display: flex;
   flex-direction: column;
-`)
+  `->rawCss
