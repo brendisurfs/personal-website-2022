@@ -38,9 +38,11 @@ module Card = {
 `->rawCss
 
   let title = `
+  padding: 0.5rem;
   `->rawCss
 
   let description = `
+  padding: 0.5rem;
   `->rawCss
 
   // GRID

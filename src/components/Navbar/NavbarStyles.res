@@ -11,11 +11,16 @@ let navbarContainer = `
 
 let navTitleStyle = `
   font-weight: bold;
-  font-size: 32px;
+  font-size: 24px;
   color: white;
   &:hover {
     cursor: pointer;
   }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 `->rawCss
 
 let navButtonWrapper = `
