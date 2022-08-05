@@ -10,17 +10,21 @@ module Card = {
 `->rawCss
 
   let textContainer = `
+    gap: 0.5rem;
     display: flex;
+    font-weight: 300;
+    letter-spacing: 2px;
     align-items: center;
     flex-direction: column;
+    font-family: sans-serif;
     justify-content: center;
 
    /* POS FOR TEXT */
     color: rgba(0,0,0, 0);
-    z-index: 40;
     position: absolute;
-    width: 100%;
     height: 100%;
+    width: 100%;
+    z-index: 40;
     top: 50%;
     left: 50%;
 
@@ -38,11 +42,10 @@ module Card = {
 `->rawCss
 
   let title = `
-  padding: 0.5rem;
+    font-size: 18px;
   `->rawCss
 
   let description = `
-  padding: 0.5rem;
   `->rawCss
 
   // GRID
@@ -50,7 +53,7 @@ module Card = {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
 
-  ${Breakpoints.sm(`
+  ${Breakpoints.xs(`
     grid-template-columns: repeat(2,1fr);
   `)}
 

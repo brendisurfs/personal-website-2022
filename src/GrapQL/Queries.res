@@ -13,6 +13,19 @@ query HomeQuery {
 }
 `)
 
+// NOTE: THIS SHOULD BE CONVERTED TO A MORE GENERIC QUERY FOR DRY PRINCIPLE
+module PageQuery = %graphql(`
+  query PageQuery($pageSlug: String!) {
+  	writing: allPages(filter:{internalName:{eq: $pageSlug}}) {
+      pageTitle
+      pageSubtitle
+      pageText {
+        value
+      }
+  }
+}
+`)
+
 module ProjectsQuery = %graphql(`
 query ProjectsQuery {
   workProjects: allComponentProjectLists {

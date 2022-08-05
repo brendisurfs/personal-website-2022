@@ -45,7 +45,7 @@ let make = (~project as p: t_workProjects_projects) => {
       onMouseEnter={_e => setIsHover(_ => true)}
       onMouseLeave={_e => setIsHover(_ => false)}
       className=Card.textContainer>
-      <h2 className=Card.title> {titleText} </h2>
+      <div className=Card.title> {titleText} </div>
       <div className=Card.description> {descriptionText} </div>
     </div>
     <CardImage image=p.projectImage isHover />

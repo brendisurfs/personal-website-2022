@@ -9,4 +9,6 @@ let titleType = `
 let typeContainer = `
   display: flex;
   flex-direction: column;
+  width: 100%;
+  justify-content: center;
   `->rawCss

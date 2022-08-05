@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Crasey-lgXVZ";
+  src: local("Crasey-lgXVZ"), url("/Crasey-lgXVZ.otf");
+}
+@font-face {
+  font-family: "Gravhez";
+  src: local("Gravhez"), url("/Gravhez.otf");
+}
+@font-face {
+  font-family: "Kingthings_Petrock";
+  src: local("Kingthings_Petrock"), url("/Kingthings_Petrock.ttf");
+}
+
+body {
+  background: black;
+  margin: 0;
+}

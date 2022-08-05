@@ -10,7 +10,9 @@ let navbarContainer = `
   `->rawCss
 
 let navTitleStyle = `
-  font-weight: bold;
+  font-family: Kingthings_Petrock, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
   font-size: 24px;
   color: white;
   &:hover {
@@ -31,6 +33,12 @@ let navButtonWrapper = `
 
 let navButton = `
   text-transform: capitalize;
+  font-family: sans-serif;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+  letter-spacing: 2px;
+  font-size: 16px;
+  color: white;
   &:hover {
     cursor: pointer;
   }

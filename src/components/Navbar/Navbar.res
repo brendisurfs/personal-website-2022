@@ -4,14 +4,14 @@ let changeUrl = url => {
 
 @react.component
 let make = () => {
-  let topbarList = ["home", "projects", "about", "writing"]
+  let topbarList = ["home", "projects", "writing", "about"]
 
   let url = RescriptReactRouter.useUrl()
   let currentPath = url.path->List.hd
 
   open NavbarStyles
   let navItems = Belt.Array.map(topbarList, l => {
-    <button className={navButton} onClick={_e => changeUrl(l)} key={l}> {l->React.string} </button>
+    <div className={navButton} onClick={_e => changeUrl(l)} key={l}> {l->React.string} </div>
   })
 
   <nav className={navbarContainer}>
