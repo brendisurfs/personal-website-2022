@@ -25,7 +25,8 @@ document.body.appendChild(renderer.domElement)
 
 // animation
 
-function animation(time) {
+type TimeStandin = any
+function animation(time: TimeStandin) {
   mesh.rotation.x = time / 2000
   mesh.rotation.y = time / 1000
 
