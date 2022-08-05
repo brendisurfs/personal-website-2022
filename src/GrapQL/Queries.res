@@ -24,7 +24,7 @@ query ProjectsQuery {
       description
       projectImage {
         id
-        responsiveImage(imgixParams: {w: 240, h: 240, fit: crop}) {
+        responsiveImage {
           alt
           src
           base64

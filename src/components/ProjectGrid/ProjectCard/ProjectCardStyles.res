@@ -2,34 +2,38 @@ open Emotion
 // CARD SECTION
 module Card = {
   let cardContainer = `
+    width: 100%;
     display: flex;
-    flex-direction: column;
     aspect-ratio: 1/1;
     position: relative;
-    width: 100%;
-    border: 1px solid black;
+    flex-direction: column;
 `->rawCss
 
   let textContainer = `
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
 
    /* POS FOR TEXT */
-    color: red;
+    color: rgba(0,0,0, 0);
     z-index: 40;
     position: absolute;
     width: 100%;
     height: 100%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+
+    .image-overlay {
+      filter: grayscale(100%);
+    }
+
     text-align: center;
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
+    transform: translate(-50%, -50%);
+    transition: color 0.5s ease-in-out, background 0.5s ease-in-out;
     &:hover {
-      opacity: 1;
+      color: white;
+      background: rgba(0, 0, 0, 0.4);
     }
 `->rawCss
 
