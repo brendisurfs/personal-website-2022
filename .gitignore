@@ -30,3 +30,13 @@ bun.lockb
 /lib/
 update_schema.sh
 .env
+
+# RUST / WASM
+/target
+**/*.rs.bk
+Cargo.lock
+bin/
+pkg/
+wasm-pack.log
+
+

@@ -2,6 +2,8 @@
   "name": "new-website-rescript",
   "version": "0.1.0",
   "scripts": {
+    "compile-three": "swc ./src/components/ThreeJS/TestingThree.ts -o ./lib/es6/src/components/ThreeJS/testing_three.js",
+    "build-wasm": "wasm-pack build --target web",
     "clean": "rescript clean",
     "build": "rescript build",
     "watch": "rescript build -w"
@@ -23,11 +25,14 @@
     "@davesnx/styled-ppx": "^0.30.4",
     "@emotion/css": "^11.9.0",
     "@originjs/vite-plugin-commonjs": "^1.0.3",
+    "@react-three/fiber": "^8.3.0",
     "@reasonml-community/graphql-ppx": "^1.2.3",
     "@rescript/react": "^0.10.3",
+    "@ryyppy/rescript-promise": "^2.1.0",
     "@types/three": "^0.143.0",
     "bs-css": "^15.3.0",
     "bs-css-emotion": "^4.3.0",
+    "bs-fetch": "^0.6.2",
     "datocms-structured-text-to-html-string": "^2.1.3",
     "gentype": "^4.5.0",
     "graphql": "^16.5.0",

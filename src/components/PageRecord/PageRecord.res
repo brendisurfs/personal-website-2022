@@ -2,10 +2,10 @@ open Queries
 open FilterOption
 
 @react.component
-let make = (~data: AboutQuery.AboutQuery_inner.t_about) => {
+let make = (~data: PageQuery.PageQuery_inner.t_data) => {
   // -- data
   open DatoParser
-  let bodyText = render(data.pageText)
+  let bodyText = render(data.pageText->Belt.Option.getExn)
 
   // -- view
   open PageRecordStyles

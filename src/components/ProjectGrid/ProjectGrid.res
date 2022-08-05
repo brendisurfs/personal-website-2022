@@ -10,7 +10,7 @@ module TypeGrid = {
   let make = (~projectType, ~projects: array<projectType>) => {
     open ProjectCardStyles
     <div className={typeContainer}>
-      // <div className={titleType}> {projectType->filterOption} </div>
+      <div className={Card.sectionTitle}> {projectType->filterOption} </div>
       <div className={Card.cardGrid}>
         {projects
         ->Belt.Array.map(p => <ProjectCard project=p key={p.title->Belt.Option.getExn} />)

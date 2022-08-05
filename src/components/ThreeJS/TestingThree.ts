@@ -18,16 +18,21 @@ const material = new THREE.MeshNormalMaterial()
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
-const renderer = new THREE.WebGLRenderer({ antialias: true })
+export const renderer = new THREE.WebGLRenderer({ antialias: true })
 renderer.setSize(window.innerWidth, window.innerHeight)
-renderer.setAnimationLoop(animation)
-document.body.appendChild(renderer.domElement)
+// renderer.setAnimationLoop(animation)
+// instead of using document.body.appendChild here,
+// lets use it in rescript
 
-// animation
-
-function animation(time) {
-  mesh.rotation.x = time / 2000
-  mesh.rotation.y = time / 1000
-
+export const renderCanvas = () => {
   renderer.render(scene, camera)
 }
+// animation
+
+// type TimeStandin = any
+// function animation(time: TimeStandin) {
+//   mesh.rotation.x = time / 2000
+//   mesh.rotation.y = time / 1000
+//
+//   renderer.render(scene, camera)
+// }

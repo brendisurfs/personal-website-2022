@@ -1,6 +1,7 @@
 open Emotion
 
-let navbarContainer = `
+module Nav = {
+  let container = `
   padding: 1rem 2rem;
   display: flex;
   background: black;
@@ -9,7 +10,7 @@ let navbarContainer = `
   justify-content: space-between;
   `->rawCss
 
-let navTitleStyle = `
+  let title = `
   font-family: Kingthings_Petrock, sans-serif;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -25,13 +26,13 @@ let navTitleStyle = `
   justify-content: center;
 `->rawCss
 
-let navButtonWrapper = `
+  let buttonWrapper = `
   gap: 12px;
   display: flex;
   justify-content: space-between;
   `->rawCss
 
-let navButton = `
+  let button = `
   text-transform: capitalize;
   font-family: sans-serif;
   border-bottom: 1px solid white;
@@ -43,3 +44,4 @@ let navButton = `
     cursor: pointer;
   }
   `->rawCss
+}
