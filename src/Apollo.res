@@ -1,5 +1,5 @@
-open ApolloClient
 open Env
+open ApolloClient
 
 let headers = {
   "Authorization": `Bearer ${rawDatoEnv}`,

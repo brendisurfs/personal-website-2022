@@ -7,7 +7,10 @@ let make = () => {
   let topbarList = ["home", "projects", "writing", "about"]
 
   let url = RescriptReactRouter.useUrl()
-  let currentPath = url.path->List.hd
+  let currentPath = switch url.path->Belt.List.head {
+  | Some(path) => path
+  | None => "home"
+  }
 
   open NavbarStyles
   let navItems = Belt.Array.map(topbarList, l => {

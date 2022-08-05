@@ -30,3 +30,10 @@ bun.lockb
 /lib/
 update_schema.sh
 .env
+
+# RUST
+debug/
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
