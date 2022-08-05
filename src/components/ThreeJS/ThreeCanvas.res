@@ -6,6 +6,5 @@ module Canvas = {
 @react.component
 let make = () => {
   // dom ref
-
-  <div className="canvas-wrapper"> <Canvas /> </div>
+  <div />
 }
