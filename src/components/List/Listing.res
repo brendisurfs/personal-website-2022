@@ -15,7 +15,7 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
   let stuff = Belt.Array.map(comps, comp => {
     switch comp {
     | Some(c) =>
-      <div>
+      <div key={Belt.Option.getWithDefault(c.title, "")}>
         <h3> {c.title->filterOption} </h3>
         <div> {c.postDate->Belt.Option.getExn->Js.Json.stringify->React.string} </div>
       </div>
