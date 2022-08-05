@@ -2,6 +2,7 @@
   "name": "new-website-rescript",
   "version": "0.1.0",
   "scripts": {
+    "build-wasm": "cargo build --release",
     "clean": "rescript clean",
     "build": "rescript build",
     "watch": "rescript build -w"
