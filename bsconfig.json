@@ -19,7 +19,8 @@
     "@reasonml-community/graphql-ppx",
     "bs-css",
     "bs-fetch",
-    "bs-css-emotion"
+    "bs-css-emotion",
+    "@ryyppy/rescript-promise"
   ],
   "graphql": {
     "apolloMode": true,

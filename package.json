@@ -25,6 +25,7 @@
     "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@reasonml-community/graphql-ppx": "^1.2.3",
     "@rescript/react": "^0.10.3",
+    "@ryyppy/rescript-promise": "^2.1.0",
     "@types/three": "^0.143.0",
     "bs-css": "^15.3.0",
     "bs-css-emotion": "^4.3.0",
