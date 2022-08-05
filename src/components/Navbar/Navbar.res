@@ -14,15 +14,15 @@ let make = () => {
 
   open NavbarStyles
   let navItems = Belt.Array.map(topbarList, l => {
-    <div className={navButton} onClick={_e => changeUrl(l)} key={l}> {l->React.string} </div>
+    <div className={Nav.button} onClick={_e => changeUrl(l)} key={l}> {l->React.string} </div>
   })
 
-  <nav className={navbarContainer}>
-    <div className={navTitleStyle} onClick={_e => changeUrl("home")}>
+  <nav className={Nav.container}>
+    <div className={Nav.title} onClick={_e => changeUrl("home")}>
       <h1> {"Brendancreates"->React.string} </h1>
       {"|"->React.string}
       <div> {currentPath->React.string} </div>
     </div>
-    <div className={navButtonWrapper}> {React.array(navItems)} </div>
+    <div className={Nav.buttonWrapper}> {React.array(navItems)} </div>
   </nav>
 }
