@@ -21,6 +21,12 @@ module PageQuery = %graphql(`
       pageText {
         value
       }
+      components {
+        ...on ComponentBlogRecord {
+          title
+          postDate
+        }
+      }
   }
 }
 `)
