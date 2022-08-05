@@ -6,6 +6,7 @@ module PageStyle = {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  color: white;
   width: 100%;
   `->rawCss
 

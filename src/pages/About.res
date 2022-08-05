@@ -3,10 +3,11 @@ open Queries
 
 @react.component
 let make = () => {
-  let res = switch AboutQuery.use() {
+  let res = switch PageQuery.use({pageSlug: "About Page"}) {
   | {loading: true} => "loading..."->React.string
   | {error: Some(_error)} => "Error loading projects :/"->React.string
-  | {data: Some({about})} => switch about {
+  | {data: Some({data})} =>
+    switch data {
     | Some(val) => <PageRecord data=val />
     | None => "No value"->React.string
     }
