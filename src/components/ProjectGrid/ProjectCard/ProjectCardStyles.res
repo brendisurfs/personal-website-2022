@@ -37,9 +37,14 @@ module Card = {
     transition: color 0.5s ease-in-out, background 0.5s ease-in-out;
     &:hover {
       color: white;
+      cursor: pointer;
       background: rgba(0, 0, 0, 0.4);
     }
 `->rawCss
+
+  let sectionTitle = `
+  color: white;
+  `->rawCss
 
   let title = `
     font-size: 18px;

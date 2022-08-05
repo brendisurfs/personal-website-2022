@@ -24,7 +24,7 @@ renderer.setSize(window.innerWidth, window.innerHeight)
 // instead of using document.body.appendChild here,
 // lets use it in rescript
 
-export const renderAnimation = () => {
+export const renderCanvas = () => {
   renderer.render(scene, camera)
 }
 // animation

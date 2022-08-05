@@ -13,7 +13,6 @@ module CardImage = {
     // if image, wrap the children so the image overlays.
     | Some(img) =>
       let imageData = img.responsiveImage->Option.getExn
-      // FIXME: why doesnt this show child props in the DOM?
       <DatoImage
         data=imageData
         style={"aspectRatio": "1/1"}
@@ -39,7 +38,6 @@ let make = (~project as p: t_workProjects_projects) => {
   let titleText = p.title->filterOption
   let descriptionText = p.description->filterOption
 
-  // card container should be relative
   <div className=Card.cardContainer>
     <div
       onMouseEnter={_e => setIsHover(_ => true)}
