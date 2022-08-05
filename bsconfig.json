@@ -18,6 +18,7 @@
     "rescript-apollo-client",
     "@reasonml-community/graphql-ppx",
     "bs-css",
+    "bs-fetch",
     "bs-css-emotion"
   ],
   "graphql": {
