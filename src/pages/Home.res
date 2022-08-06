@@ -1,8 +1,9 @@
 open Layout
+open Promise
 
-let wasi = WasmLoader.init()
-Js.log(wasi)
+let wasmPromise = WasmLoader.init()->Promise.then(data => Js.log(data)->resolve)->ignore
+
 @react.component
 let make = () => {
-  <Layout> <ThreeCanvas /> </Layout>
+  <Layout> <div /> </Layout>
 }
