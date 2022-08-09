@@ -7,7 +7,15 @@ module Nav = {
   background: black;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
+  justify-content: center;
+  border: 1px solid red;
+  `->rawCss
+
+  let innerWrapper = `
+  width: 66%;
+  display: flex;
+  align-items: center;
   `->rawCss
 
   let title = `
