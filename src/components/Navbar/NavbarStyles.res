@@ -6,16 +6,18 @@ module Nav = {
   display: flex;
   background: black;
   flex-direction: row;
-  align-items: center;
-  gap: 10px;
+  max-width: 100%;
+  margin: 0 auto;
   justify-content: center;
-  border: 1px solid red;
   `->rawCss
 
   let innerWrapper = `
-  width: 66%;
+  width: 100%;
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
   `->rawCss
 
   let title = `
@@ -43,8 +45,6 @@ module Nav = {
   let button = `
   text-transform: capitalize;
   font-family: sans-serif;
-  border-bottom: 1px solid white;
-  padding-bottom: 10px;
   letter-spacing: 2px;
   font-size: 16px;
   color: white;

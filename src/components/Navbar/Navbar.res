@@ -32,17 +32,13 @@ let make = () => {
   let leftSide = splitArrayByLen(topbarList, Less)->createNavItems
   let rightSide = splitArrayByLen(topbarList, Greater)->createNavItems
 
-  let navItems = Belt.Array.map(topbarList, l => {
-    <div className={Nav.button} onClick={_e => changeUrl(l)} key={l}> {l->React.string} </div>
-  })
-
   <nav className={Nav.container}>
     <div className={Nav.innerWrapper}>
       <div className={Nav.buttonWrapper}> {React.array(leftSide)} </div>
       <div className={Nav.title} onClick={_e => changeUrl("home")}>
         <h1> {"Brendancreates"->React.string} </h1>
-        {"|"->React.string}
-        <div> {currentPath->React.string} </div>
+        /* {"|"->React.string} */
+        /* <div> {currentPath->React.string} </div> */
       </div>
       <div className={Nav.buttonWrapper}> {React.array(rightSide)} </div>
     </div>
