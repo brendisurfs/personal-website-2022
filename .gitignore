@@ -37,6 +37,7 @@ update_schema.sh
 Cargo.lock
 bin/
 pkg/
+target/
 wasm-pack.log
 
 

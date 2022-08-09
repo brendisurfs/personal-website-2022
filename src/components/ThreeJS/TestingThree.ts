@@ -1,7 +1,5 @@
 import * as THREE from "three"
 
-// init
-
 const camera = new THREE.PerspectiveCamera(
   70,
   window.innerWidth / window.innerHeight,
@@ -18,21 +16,21 @@ const material = new THREE.MeshNormalMaterial()
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
-export const renderer = new THREE.WebGLRenderer({ antialias: true })
-renderer.setSize(window.innerWidth, window.innerHeight)
-// renderer.setAnimationLoop(animation)
-// instead of using document.body.appendChild here,
-// lets use it in rescript
-
+const renderer = new THREE.WebGLRenderer({ antialias: true })
+renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8)
 export const renderCanvas = () => {
+  return renderer.domElement
+}
+export const renderTarget = () => {
+  renderer.setAnimationLoop(animation)
   renderer.render(scene, camera)
 }
-// animation
 
-// type TimeStandin = any
-// function animation(time: TimeStandin) {
-//   mesh.rotation.x = time / 2000
-//   mesh.rotation.y = time / 1000
-//
-//   renderer.render(scene, camera)
-// }
+function animation(time: number) {
+  mesh.rotation.x = time / 2000
+  mesh.rotation.y = time / 1000
+
+  renderer.render(scene, camera)
+
+  // animation
+}
