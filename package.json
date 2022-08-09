@@ -2,7 +2,7 @@
   "name": "new-website-rescript",
   "version": "0.1.0",
   "scripts": {
-    "compile-three": "swc ./src/components/ThreeJS/TestingThree.ts -o TestingThree.js",
+    "compile-three": "swc ./src/components/ThreeJS/TestingThree.ts -o ./lib/es6/src/components/ThreeJS/TestingThree.js",
     "build-wasm": "wasm-pack build --target web",
     "clean": "rescript clean",
     "build": "rescript build",
@@ -15,7 +15,8 @@
   "license": "MIT",
   "devDependencies": {
     "process": "^0.11.10",
-    "rescript": "^9.1.4"
+    "rescript": "^9.1.4",
+    "chokidar": "^3.5.3"
   },
   "resolutions": {
     "wonka": "4.0.14"
@@ -33,6 +34,7 @@
     "bs-css": "^15.3.0",
     "bs-css-emotion": "^4.3.0",
     "bs-fetch": "^0.6.2",
+    "chokidar": "^3.5.3",
     "datocms-structured-text-to-html-string": "^2.1.3",
     "gentype": "^4.5.0",
     "graphql": "^16.5.0",

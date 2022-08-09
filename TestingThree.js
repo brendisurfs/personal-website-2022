@@ -1,6 +1,11 @@
 import * as THREE from "three";
 // init
 export var renderThree = function() {
+    var animation = function animation(time) {
+        mesh.rotation.x = time / 2000;
+        mesh.rotation.y = time / 1000;
+        renderer.render(scene, camera);
+    };
     var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10);
     camera.position.z = 1;
     var scene = new THREE.Scene();
@@ -22,11 +27,6 @@ export var renderThree = function() {
     renderer.render(scene, camera);
 // animation
 };
-function animation(time) {
-    mesh.rotation.x = time / 2000;
-    mesh.rotation.y = time / 1000;
-    renderer.render(scene, camera);
-}
 
 
 //# sourceMappingURL=TestingThree.js.map

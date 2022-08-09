@@ -7,9 +7,6 @@
       "subdirs": true
     }
   ],
-  "js-post-build": {
-    "cmd": "yarn compile-three"
-  },
   "suffix": ".bs.js",
 
   "package-specs": [{ "module": "es6", "in-source": false }],
