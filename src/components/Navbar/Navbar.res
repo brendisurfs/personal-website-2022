@@ -13,6 +13,9 @@ let make = () => {
   }
 
   open NavbarStyles
+  let arrayLen = Array.length(topbarList)
+  let leftSide = topbarList->Js.Array2.filteri((_, idx) => idx < arrayLen / 2)
+  Js.log(leftSide)
   let navItems = Belt.Array.map(topbarList, l => {
     <div className={Nav.button} onClick={_e => changeUrl(l)} key={l}> {l->React.string} </div>
   })
