@@ -1,10 +1,8 @@
 @module("./TestingThree.js") external renderTarget: unit => unit = "renderTarget"
 @module("./TestingThree.js") external renderCanvas: unit => Dom.element = "renderCanvas"
-// find the target using ref.
 
 module WebApi = {
   module Element = {
-    // append child for renderer canvas.
     @send external appendChild: (Dom.element, Dom.element) => unit = "appendChild"
   }
 
@@ -17,7 +15,6 @@ module WebApi = {
 
 @react.component
 let make = () => {
-  // I want to make this a nullable Dom element
   let canvas = React.useRef(Js.Nullable.null)
 
   open WebApi
