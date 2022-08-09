@@ -21,12 +21,16 @@ scene.add(mesh)
 export const renderer = new THREE.WebGLRenderer({ antialias: true })
 renderer.setSize(window.innerWidth, window.innerHeight)
 // target the canvas we put out instead,
-document.appendChild(renderer.domElement)
+let targetCanvas = document.getElementById("three-canvas")
+targetCanvas.appendChild(renderer.domElement)
 // renderer.setAnimationLoop(animation)
 // instead of using document.body.appendChild here,
 // lets use it in rescript
+export const renderThree = () => {
+  targetCanvas.appendChild(renderer.domElement)
+  renderer.render(scene, camera)
+}
 
-renderer.render(scene, camera)
 // animation
 
 function animation(time: number) {
