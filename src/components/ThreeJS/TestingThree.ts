@@ -20,19 +20,18 @@ scene.add(mesh)
 
 export const renderer = new THREE.WebGLRenderer({ antialias: true })
 renderer.setSize(window.innerWidth, window.innerHeight)
+// target the canvas we put out instead,
+document.appendChild(renderer.domElement)
 // renderer.setAnimationLoop(animation)
 // instead of using document.body.appendChild here,
 // lets use it in rescript
 
-export const renderCanvas = () => {
-  renderer.render(scene, camera)
-}
+renderer.render(scene, camera)
 // animation
 
-// type TimeStandin = any
-// function animation(time: TimeStandin) {
-//   mesh.rotation.x = time / 2000
-//   mesh.rotation.y = time / 1000
-//
-//   renderer.render(scene, camera)
-// }
+function animation(time: number) {
+  mesh.rotation.x = time / 2000
+  mesh.rotation.y = time / 1000
+
+  renderer.render(scene, camera)
+}
