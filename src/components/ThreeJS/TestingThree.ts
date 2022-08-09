@@ -1,6 +1,5 @@
 import * as THREE from "three"
 
-// init
 const camera = new THREE.PerspectiveCamera(
   70,
   window.innerWidth / window.innerHeight,
@@ -19,8 +18,6 @@ scene.add(mesh)
 
 const renderer = new THREE.WebGLRenderer({ antialias: true })
 renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8)
-// const targetCanvas = document.getElementById("three-canvas")
-// targetCanvas.appendChild(renderer.domElement)
 export const renderCanvas = () => {
   return renderer.domElement
 }
