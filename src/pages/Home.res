@@ -1,8 +1,6 @@
 open Layout
-@module("src/components/ThreeJS/TestingThree") external renderThree: unit => unit = "renderThree"
 
 @react.component
 let make = () => {
-  renderThree()
-  <Layout> <div> {"cum"->React.string} </div> </Layout>
+  <Layout> <div> {"Testing Three on Homepage"->React.string} </div> </Layout>
 }

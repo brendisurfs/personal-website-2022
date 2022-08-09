@@ -2,7 +2,7 @@
   "name": "new-website-rescript",
   "version": "0.1.0",
   "scripts": {
-    "compile-three": "swc ./src/components/ThreeJS/TestingThree.ts -o ./lib/es6/src/components/ThreeJS/testing_three.js",
+    "compile-three": "swc ./src/components/ThreeJS/TestingThree.ts -o ./lib/es6/src/components/ThreeJS/",
     "build-wasm": "wasm-pack build --target web",
     "clean": "rescript clean",
     "build": "rescript build",

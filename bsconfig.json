@@ -1,9 +1,14 @@
 {
   "name": "new-website-rescript",
   "version": "0.1.0",
-  "sources": {
-    "dir": "src",
-    "subdirs": true
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "js-post-build": {
+    "cmd": "yarn compile-three"
   },
   "suffix": ".bs.js",
 

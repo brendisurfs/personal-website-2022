@@ -22,7 +22,7 @@ export const renderer = new THREE.WebGLRenderer({ antialias: true })
 renderer.setSize(window.innerWidth, window.innerHeight)
 // target the canvas we put out instead,
 let targetCanvas = document.getElementById("three-canvas")
-targetCanvas.appendChild(renderer.domElement)
+// targetCanvas.appendChild(renderer.domElement)
 // renderer.setAnimationLoop(animation)
 // instead of using document.body.appendChild here,
 // lets use it in rescript
