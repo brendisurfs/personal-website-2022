@@ -13,9 +13,7 @@ let splitArrayByLen = (arr, splitOp) => {
 }
 
 @react.component
-let make = () => {
-  let topbarList = ["home", "projects", "writing", "about"]
-
+let make = (~topbarList) => {
   open NavbarStyles
   let createNavItems = arr => {
     Belt.Array.map(arr, l => {
