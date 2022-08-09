@@ -9,10 +9,10 @@ module Canvas = {
 /* <div /> */
 /* } */
 
-@module("../ThreeJS/TestingThree") external renderThree: unit => unit = "renderThree"
+@module("./TestingThree.js") external renderThree: unit => unit = "renderThree"
 
 @react.component
 let make = () => {
-  let _ = renderThree()
-  <div> {"three canvas maker"->React.string} </div>
+  renderThree()
+  <div id="target-canvas"> {"three canvas maker"->React.string} </div>
 }
