@@ -34,7 +34,6 @@ let make = () => {
     None
   })
 
-  <div ref={ReactDOM.Ref.domRef(canvas)}>
-    {"three canvas maker"->React.string} <div id="target-canvas" />
-  </div>
+  open StylesThreeCanvas
+  <div className={CanvasStyles.container} ref={ReactDOM.Ref.domRef(canvas)} />
 }
