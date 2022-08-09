@@ -21,9 +21,8 @@ module Nav = {
   `->rawCss
 
   let title = `
-  font-family: Kingthings_Petrock, sans-serif;
+  font-family: Crasey, sans-serif;
   text-transform: uppercase;
-  letter-spacing: 4px;
   font-size: 24px;
   color: white;
   &:hover {
@@ -43,8 +42,8 @@ module Nav = {
   `->rawCss
 
   let button = `
-  text-transform: capitalize;
-  font-family: sans-serif;
+  text-transform: uppercase;
+  font-family: Crasey, sans-serif;
   letter-spacing: 2px;
   font-size: 16px;
   color: white;
