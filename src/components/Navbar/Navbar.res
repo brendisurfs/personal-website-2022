@@ -2,27 +2,35 @@ let changeUrl = url => {
   RescriptReactRouter.push(url)
 }
 
-@react.component
-let make = () => {
-  let topbarList = ["home", "projects", "writing", "about"]
+type splitOp = Greater | Less
 
-  let url = RescriptReactRouter.useUrl()
-  let currentPath = switch url.path->Belt.List.head {
-  | Some(path) => path
-  | None => "home"
+let splitArrayByLen = (arr, splitOp) => {
+  let arrayLen = Array.length(arr)
+  switch splitOp {
+  | Greater => arr->Js.Array2.filteri((_, idx) => idx >= arrayLen / 2)
+  | Less => arr->Js.Array2.filteri((_, idx) => idx < arrayLen / 2)
   }
+}
 
+@react.component
+let make = (~topbarList) => {
   open NavbarStyles
-  let navItems = Belt.Array.map(topbarList, l => {
-    <div className={Nav.button} onClick={_e => changeUrl(l)} key={l}> {l->React.string} </div>
-  })
+  let createNavItems = arr => {
+    Belt.Array.map(arr, l => {
+      <div className={Nav.button} onClick={_e => changeUrl(l)} key={l}> {l->React.string} </div>
+    })
+  }
+  // left and right side of the navbar
+  let leftSide = splitArrayByLen(topbarList, Less)->createNavItems
+  let rightSide = splitArrayByLen(topbarList, Greater)->createNavItems
 
   <nav className={Nav.container}>
-    <div className={Nav.title} onClick={_e => changeUrl("home")}>
-      <h1> {"Brendancreates"->React.string} </h1>
-      {"|"->React.string}
-      <div> {currentPath->React.string} </div>
+    <div className={Nav.innerWrapper}>
+      <div className={Nav.buttonWrapper}> {React.array(leftSide)} </div>
+      <div className={Nav.title} onClick={_e => changeUrl("home")}>
+        <h1> {"Brendancreates"->React.string} </h1>
+      </div>
+      <div className={Nav.buttonWrapper}> {React.array(rightSide)} </div>
     </div>
-    <div className={Nav.buttonWrapper}> {React.array(navItems)} </div>
   </nav>
 }
