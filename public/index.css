@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Crasey-lgXVZ";
+  font-family: "Crasey";
   src: local("Crasey-lgXVZ"), url("/Crasey-lgXVZ.otf");
 }
 @font-face {
@@ -9,6 +9,10 @@
 @font-face {
   font-family: "Kingthings_Petrock";
   src: local("Kingthings_Petrock"), url("/Kingthings_Petrock.ttf");
+}
+@font-face {
+  font-family: "ChleonaRegular";
+  src: local("Chleona_Reg"), url("./Chleona_Reg.ttf");
 }
 
 body {
