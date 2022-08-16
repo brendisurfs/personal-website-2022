@@ -1,7 +1,5 @@
-use bevy::utils::label::DynHash;
-use bevy::{prelude::*, window::WindowId};
+use bevy::prelude::*;
 
-use raw_window_handle::RawWindowHandle;
 use raw_window_handle::WebWindowHandle;
 use wasm_bindgen::JsCast;
 use web_sys::HtmlCanvasElement;
@@ -28,8 +26,20 @@ impl Plugin for CanvasPlugin {
             // let id = raw_handle.parse().unwrap();
 
             let ws_window = web_sys::window().unwrap();
-            let document = ws_window.document().unwrap();
-            let html_doc = document.dyn_into::<web_sys::HtmlCanvasElement>().unwrap();
+            let canvas: HtmlCanvasElement = ws_window
+                .document()
+                .unwrap()
+                .query_selector(&format!("[data-raw-handle=1]"))
+                .unwrap()
+                .unwrap()
+                .dyn_into()
+                .unwrap();
+
+            canvas.set_width(window_descriptor.width as _);
+            canvas.set_height(window_descriptor.height as _);
         }
+
+        let width: f32 = window_descriptor.width as _;
+        let height: f32 = window_descriptor.height as _;
     }
 }
