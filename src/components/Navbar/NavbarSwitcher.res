@@ -1,4 +1,5 @@
 open WebApi.Window
+open MobileNav
 
 @react.component
 let make = () => {
