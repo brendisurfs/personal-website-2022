@@ -19,8 +19,8 @@ module MVStyle = {
   `->Emotion.rawCss
 
   let menuDropdown = `
-  right: 0;
-  top: 10%;
+  transition: right 0.5s ease-in-out;
+  top: 5%;
   position: absolute; 
   width: 200px;
   height: 200px;
