@@ -17,4 +17,13 @@ module MVStyle = {
   let mobileMenuBtn = `
     cursor: pointer; 
   `->Emotion.rawCss
+
+  let menuDropdown = `
+  right: 0;
+  top: 10%;
+  position: absolute; 
+  width: 200px;
+  height: 200px;
+  background: white;
+  `->Emotion.rawCss
 }

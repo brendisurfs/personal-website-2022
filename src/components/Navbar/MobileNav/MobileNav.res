@@ -6,18 +6,9 @@ module MapIcon = {
   let make = () => {
     let (isOpen, setIsOpen) = React.useState(_ => false)
 
-    if useViewport() > 720 {
-      setIsOpen(_p => false)
-    }
-
     let handleClick = () => {
       setIsOpen(_prev => !isOpen)
     }
-
-    React.useEffect1(() => {
-      Js.log(isOpen)
-      None
-    }, [isOpen])
 
     <div className={MVStyle.mobileMenuBtn} onClick={_ => handleClick()}>
       <svg
@@ -45,7 +36,7 @@ module MobileNav = {
     let name = "brendancreates"->React.string
 
     <nav className={MVStyle.container}>
-      <div className={MVStyle.mobileTitle}> name </div> <MapIcon />
+      <div className={MVStyle.mobileTitle}> name </div> <MapIcon /> <MobileMenu />
     </nav>
   }
 }
