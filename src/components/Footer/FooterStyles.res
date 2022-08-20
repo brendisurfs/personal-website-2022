@@ -1,6 +1,16 @@
 open Emotion
 
 let footerWrapper = `
-background: gray;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+background: black;
+font-weight: 300;
 margin-top: auto;
+padding: 0.25rem;
+font-size: 14px;
+color: #666;
+text-transform: uppercase;
+font-family: Gravhez, sans-serif;
 `->rawCss
