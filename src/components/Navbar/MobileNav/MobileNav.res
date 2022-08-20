@@ -24,6 +24,10 @@ open MobileNavStyles
 module MobileNav = {
   @react.component
   let make = () => {
-    <nav className={MobileNavStyle.container}> <MapIcon /> </nav>
+    let name = "brendancreates"->React.string
+
+    <nav className={MobileNavStyle.container}>
+      <div className={MobileNavStyle.mobileTitle}> name </div> <MapIcon />
+    </nav>
   }
 }

@@ -21,10 +21,8 @@
 	},
 	"dependencies": {
 		"@apollo/client": "^3.6.9",
-		"@davesnx/styled-ppx": "^0.30.4",
 		"@emotion/css": "^11.9.0",
 		"@originjs/vite-plugin-commonjs": "^1.0.3",
-		"@react-three/fiber": "^8.3.0",
 		"@reasonml-community/graphql-ppx": "^1.2.3",
 		"@rescript/react": "^0.10.3",
 		"@ryyppy/rescript-promise": "^2.1.0",

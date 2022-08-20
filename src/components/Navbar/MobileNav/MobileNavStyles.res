@@ -1,8 +1,16 @@
-open Emotion
-
 module MobileNavStyle = {
   let container = `
     padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`->Emotion.rawCss
 
-`->rawCss
+  let mobileTitle = `
+  color: white; 
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: Crasey, sans-serif;
+  `->Emotion.rawCss
 }
