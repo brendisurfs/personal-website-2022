@@ -1,4 +1,4 @@
-module MobileNavStyle = {
+module MVStyle = {
   let container = `
     padding: 1rem;
     display: flex;
@@ -12,5 +12,9 @@ module MobileNavStyle = {
   font-size: 20px;
   text-transform: uppercase;
   font-family: Crasey, sans-serif;
+  `->Emotion.rawCss
+
+  let mobileMenuBtn = `
+    cursor: pointer; 
   `->Emotion.rawCss
 }
