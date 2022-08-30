@@ -19,12 +19,23 @@ module MVStyle = {
   `->Emotion.rawCss
 
   let menuDropdown = `
-  transition: top 0.5s ease-in-out;
-  z-index: 2;
   right: 0%;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 200px;
-  background: white;
+  height: 100%;
+  border-radius: 8px;
+  background-color: rgba(255,255,255, .15);
+  color: white;
+  backdrop-filter: blur(10px);
+  `->Emotion.rawCss
+
+  let menuDropownButton = `
+  font-size: 48px;
+  display: block;
+
   `->Emotion.rawCss
 }

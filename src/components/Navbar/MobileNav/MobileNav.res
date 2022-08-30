@@ -37,14 +37,14 @@ module MapIcon = {
 
       // mobile menu items that get turned into react array.
       let mobileItems = Js.Array2.map(menuItems, item => {
-        let comp = <div key=item> {item->React.string} </div>
+        let comp = <div className={MVStyle.menuDropownButton} key=item> {item->React.string} </div>
         comp
       })->React.array
 
       <div
         id="mobile-menu-popover"
         className={MVStyle.menuDropdown}
-        style={ReactDOM.Style.make(~top=posPercent, ~transition="top 0.5s ease-in-out", ())}>
+        style={ReactDOM.Style.make(~top=posPercent, ~transition="top 0.75s ease-in-out", ())}>
         {"menu"->React.string} mobileItems
       </div>
     }

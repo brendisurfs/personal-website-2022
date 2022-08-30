@@ -9,6 +9,7 @@ module Nav = {
   max-width: 100%;
   margin: 0 auto;
   justify-content: center;
+  z-index: 100;
   `->rawCss
 
   let innerWrapper = `
@@ -21,6 +22,7 @@ module Nav = {
   `->rawCss
 
   let title = `
+  z-index: 100;
   font-family: Crasey, sans-serif;
   text-transform: uppercase;
   font-size: 24px;

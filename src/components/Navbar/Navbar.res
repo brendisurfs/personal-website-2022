@@ -24,7 +24,8 @@ let make = (~topbarList) => {
   let leftSide = splitArrayByLen(topbarList, Less)->createNavItems
   let rightSide = splitArrayByLen(topbarList, Greater)->createNavItems
 
-  <nav className={Nav.container}>
+  <nav
+    className={Nav.container} style={ReactDOM.Style.make(~zIndex="999", ~background="black", ())}>
     <div className={Nav.innerWrapper}>
       <div className={Nav.buttonWrapper}> {React.array(leftSide)} </div>
       <div className={Nav.title} onClick={_e => changeUrl("home")}>
