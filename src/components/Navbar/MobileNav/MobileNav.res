@@ -11,8 +11,6 @@ module MapIcon = {
       setIsOpen(_prev => !isOpen)
     }
 
-    // ref to the mobile menu, to close it if we click outside of it.
-    let menuRef = React.useRef(Js.Nullable.null)
     // handles a click outside the mobile menu so that it will still close.
     let fnHandleClickOutside = (evt: WebApi.eventType) => {
       let eventTarget = evt.target

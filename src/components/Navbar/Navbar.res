@@ -17,6 +17,7 @@ let make = (~topbarList) => {
       <div className={Nav.button} onClick={_e => changeUrl(l)} key={l}> {l->React.string} </div>
     })
   }
+
   // left and right side of the navbar
   let leftSide = splitArrayByLen(topbarList, Less)->createNavItems
   let rightSide = splitArrayByLen(topbarList, Greater)->createNavItems

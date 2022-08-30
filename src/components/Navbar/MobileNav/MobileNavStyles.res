@@ -28,13 +28,18 @@ module MVStyle = {
   width: 100%;
   height: 100%;
   background-color: rgba(20,20,20, .50);
-  color: white;
   backdrop-filter: blur(10px);
   `->Emotion.rawCss
 
   let menuDropownButton = `
   font-size: 2rem;
   display: block;
+  cursor: pointer;
   font-family: Crasey, sans-serif;
+  color: lightgray;
+  transition: color 0.25s ease-in-out;
+  &:hover {
+    color: gold;
+  }
   `->Emotion.rawCss
 }
