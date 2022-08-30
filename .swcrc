@@ -1,0 +1,23 @@
+{
+	"jsc": {
+		"baseUrl": "./src",
+		"paths": {
+			"@modules/*": ["./modules/*"]
+		},
+		"target": "es2020",
+		"parser": {
+			"syntax": "ecmascript",
+			"jsx": true
+		},
+		"minify": {
+			"compress": true,
+			"mangle": true
+		},
+		"loose": false
+	},
+	"module": {
+		"type": "es6"
+	},
+	"minify": true,
+	"isModule": true
+}

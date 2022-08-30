@@ -1,7 +1,4 @@
-let changeUrl = url => {
-  RescriptReactRouter.push(url)
-}
-
+open ChangeUrl
 type splitOp = Greater | Less
 
 let splitArrayByLen = (arr, splitOp) => {
@@ -20,11 +17,13 @@ let make = (~topbarList) => {
       <div className={Nav.button} onClick={_e => changeUrl(l)} key={l}> {l->React.string} </div>
     })
   }
+
   // left and right side of the navbar
   let leftSide = splitArrayByLen(topbarList, Less)->createNavItems
   let rightSide = splitArrayByLen(topbarList, Greater)->createNavItems
 
-  <nav className={Nav.container}>
+  <nav
+    className={Nav.container} style={ReactDOM.Style.make(~zIndex="999", ~background="black", ())}>
     <div className={Nav.innerWrapper}>
       <div className={Nav.buttonWrapper}> {React.array(leftSide)} </div>
       <div className={Nav.title} onClick={_e => changeUrl("home")}>

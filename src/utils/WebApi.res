@@ -1,3 +1,5 @@
+type eventType = {target: Dom.element}
+
 module Element = {
   @send external appendChild: (Dom.element, Dom.element) => unit = "appendChild"
 }
@@ -13,7 +15,7 @@ module Window = {
   external windowInnerWidth: int = "innerWidth"
 
   @scope("window") @val
-  external addWindowEventListener: (string, unit => unit) => unit = "addEventListener"
+  external addWindowEventListener: (string, 'evt => unit) => unit = "addEventListener"
 
   @scope("window") @val
   external removeWindowEventListener: (string, unit => unit) => unit = "removeEventListener"

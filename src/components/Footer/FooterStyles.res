@@ -9,8 +9,8 @@ background: black;
 font-weight: 300;
 margin-top: auto;
 padding: 0.25rem;
-font-size: 14px;
+font-size: 10px;
 color: #666;
 text-transform: uppercase;
-font-family: Gravhez, sans-serif;
+font-family: sans-serif;
 `->rawCss
