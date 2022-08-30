@@ -5,13 +5,20 @@ module MapIcon = {
   @react.component
   let make = (~menuItems) => {
     let (isOpen, setIsOpen) = React.useState(_ => false)
-    // ref to the mobile menu, to close it if we click outside of it.
-    let menuRef = React.useRef(Js.Nullable.null)
 
     let handleClick = () => {
       setIsOpen(_prev => !isOpen)
     }
 
+    // ref to the mobile menu, to close it if we click outside of it.
+    let menuRef = React.useRef(Js.Nullable.null)
+    let menuTarget = WebApi.Document.getElementById("")
+    // handles a click outside the mobile menu so that it will still close.
+    let fnHandleClickOutside = (evt: WebApi.eventType) => {
+      Js.log(evt.target)
+    }
+
+    let _ = WebApi.Window.addWindowEventListener("click", fnHandleClickOutside)
     // mobileMenu - popover mobile menu
 
     @react.component
@@ -39,6 +46,7 @@ module MapIcon = {
       </div>
     }
 
+    // -- view
     <div style={ReactDOM.Style.make(~overflow="hidden", ())}>
       <svg
         className={MVStyle.mobileMenuBtn}
@@ -66,10 +74,10 @@ module MapIcon = {
 module MobileNav = {
   @react.component
   let make = (~menuItems: array<string>) => {
-    let name = "brendancreates"->React.string
+    let myName = "brendancreates"->React.string
 
     <nav className={MVStyle.container}>
-      <div className={MVStyle.mobileTitle}> name </div> <MapIcon menuItems />
+      <div className={MVStyle.mobileTitle}> myName </div> <MapIcon menuItems />
     </nav>
   }
 }
