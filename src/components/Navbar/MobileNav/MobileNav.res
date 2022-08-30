@@ -11,13 +11,12 @@ module MapIcon = {
       setIsOpen(_prev => !isOpen)
     }
 
+    let menuButtonValue =
+      Document.document->Document.getElementById("mobile-menu-map-icon")->Js.Option.getExn
+
     // handles a click outside the mobile menu so that it will still close.
     let fnHandleClickOutside = (evt: WebApi.eventType) => {
       let eventTarget = evt.target
-      let document = Document.document
-      let menuMapButtonTarget = Document.getElementById(document, "mobile-menu-map-icon")
-      let menuButtonValue = Js.Option.getExn(menuMapButtonTarget)
-
       if eventTarget != menuButtonValue && isOpen {
         setIsOpen(_prev => false)
       }
@@ -84,7 +83,10 @@ module MobileNav = {
     let myName = "brendancreates"->React.string
 
     <nav className={MVStyle.container}>
-      <div className={MVStyle.mobileTitle}> myName </div> <MapIcon menuItems />
+      // title
+      <div className={MVStyle.mobileTitle} onClick={_e => changeUrl("home")}> myName </div>
+      // map icon
+      <MapIcon menuItems />
     </nav>
   }
 }

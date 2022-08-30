@@ -2,16 +2,22 @@ module MVStyle = {
   let container = `
     padding: 1rem;
     display: flex;
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
 `->Emotion.rawCss
 
   let mobileTitle = `
   color: white;
+  cursor: pointer;
   font-size: 1.75rem;
   text-transform: uppercase;
   font-family: Crasey, sans-serif;
+  transition: color 0.25s ease-in-out;
+
+  &:hover {
+    color: #c89720;
+  }
   `->Emotion.rawCss
 
   let mobileMenuBtn = `
@@ -20,13 +26,13 @@ module MVStyle = {
 
   let menuDropdown = `
   right: 0%;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   background-color: rgba(20,20,20, .50);
   backdrop-filter: blur(10px);
   `->Emotion.rawCss
@@ -35,11 +41,12 @@ module MVStyle = {
   font-size: 2rem;
   display: block;
   cursor: pointer;
-  font-family: Crasey, sans-serif;
   color: lightgray;
+  font-family: Crasey, sans-serif;
   transition: color 0.25s ease-in-out;
+
   &:hover {
-    color: gold;
+    color: #c89720;
   }
   `->Emotion.rawCss
 }
