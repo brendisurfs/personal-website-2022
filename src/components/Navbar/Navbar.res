@@ -1,7 +1,4 @@
-let changeUrl = url => {
-  RescriptReactRouter.push(url)
-}
-
+open ChangeUrl
 type splitOp = Greater | Less
 
 let splitArrayByLen = (arr, splitOp) => {

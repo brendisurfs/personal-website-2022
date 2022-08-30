@@ -9,7 +9,7 @@ module MVStyle = {
 
   let mobileTitle = `
   color: white;
-  font-size: 20px;
+  font-size: 1.75rem;
   text-transform: uppercase;
   font-family: Crasey, sans-serif;
   `->Emotion.rawCss
@@ -27,15 +27,14 @@ module MVStyle = {
   align-items: center;
   width: 100%;
   height: 100%;
-  border-radius: 8px;
-  background-color: rgba(255,255,255, .15);
+  background-color: rgba(20,20,20, .50);
   color: white;
   backdrop-filter: blur(10px);
   `->Emotion.rawCss
 
   let menuDropownButton = `
-  font-size: 48px;
+  font-size: 2rem;
   display: block;
-
+  font-family: Crasey, sans-serif;
   `->Emotion.rawCss
 }

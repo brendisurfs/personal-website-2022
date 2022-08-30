@@ -1,4 +1,5 @@
 open WebApi
+open ChangeUrl
 open MobileNavStyles
 
 module MapIcon = {
@@ -16,9 +17,7 @@ module MapIcon = {
     let fnHandleClickOutside = (evt: WebApi.eventType) => {
       let eventTarget = evt.target
       let document = Document.document
-      let menuTarget = Document.getElementById(document, "mobile-menu-popover")
       let menuMapButtonTarget = Document.getElementById(document, "mobile-menu-map-icon")
-      let menuTargetValue = Js.Option.getExn(menuTarget)
       let menuButtonValue = Js.Option.getExn(menuMapButtonTarget)
 
       if eventTarget != menuButtonValue && isOpen {
@@ -37,15 +36,23 @@ module MapIcon = {
 
       // mobile menu items that get turned into react array.
       let mobileItems = Js.Array2.map(menuItems, item => {
-        let comp = <div className={MVStyle.menuDropownButton} key=item> {item->React.string} </div>
+        let comp =
+          <div className={MVStyle.menuDropownButton} onClick={_e => changeUrl(item)} key=item>
+            {item->React.string}
+          </div>
         comp
       })->React.array
 
       <div
         id="mobile-menu-popover"
         className={MVStyle.menuDropdown}
-        style={ReactDOM.Style.make(~top=posPercent, ~transition="top 0.75s ease-in-out", ())}>
-        {"menu"->React.string} mobileItems
+        style={ReactDOM.Style.make(
+          ~top=posPercent,
+          ~transition="top 0.75s ease-in-out",
+          ~zIndex="100",
+          (),
+        )}>
+        mobileItems
       </div>
     }
 
@@ -68,9 +75,7 @@ module MapIcon = {
         <line x1="8" y1="2" x2="8" y2="18" />
         <line x1="16" y1="6" x2="16" y2="22" />
       </svg>
-      // add ref here to close the window if we click outside of it
       mobileMenuPopoverItem
-      // <MobileMenu isOpen menuItems />
     </div>
   }
 }
