@@ -1,4 +1,4 @@
-open WebApi.Window
+open WebApi
 open MobileNavStyles
 
 module MapIcon = {
@@ -12,17 +12,24 @@ module MapIcon = {
 
     // ref to the mobile menu, to close it if we click outside of it.
     let menuRef = React.useRef(Js.Nullable.null)
-    let menuTarget = WebApi.Document.getElementById("")
     // handles a click outside the mobile menu so that it will still close.
     let fnHandleClickOutside = (evt: WebApi.eventType) => {
-      Js.log(evt.target)
+      let eventTarget = evt.target
+      let document = Document.document
+      let menuTarget = Document.getElementById(document, "mobile-menu-popover")
+      let menuMapButtonTarget = Document.getElementById(document, "mobile-menu-map-icon")
+      let menuTargetValue = Js.Option.getExn(menuTarget)
+      let menuButtonValue = Js.Option.getExn(menuMapButtonTarget)
+
+      if eventTarget != menuButtonValue && isOpen {
+        setIsOpen(_prev => false)
+      }
     }
 
-    let _ = WebApi.Window.addWindowEventListener("click", fnHandleClickOutside)
-    // mobileMenu - popover mobile menu
+    let _ = WebApi.Window.addWindowEventListener("mouseup", fnHandleClickOutside)
 
     @react.component
-    let mobileMenu = {
+    let mobileMenuPopoverItem = {
       let posPercent = switch isOpen {
       | true => "0%"
       | false => "-100%"
@@ -35,13 +42,9 @@ module MapIcon = {
       })->React.array
 
       <div
+        id="mobile-menu-popover"
         className={MVStyle.menuDropdown}
-        style={ReactDOM.Style.make(
-          ~top=posPercent,
-          ~display=isOpen ? "" : "hidden",
-          ~transition="top 0.5s ease-in-out",
-          (),
-        )}>
+        style={ReactDOM.Style.make(~top=posPercent, ~transition="top 0.5s ease-in-out", ())}>
         {"menu"->React.string} mobileItems
       </div>
     }
@@ -49,6 +52,7 @@ module MapIcon = {
     // -- view
     <div style={ReactDOM.Style.make(~overflow="hidden", ())}>
       <svg
+        id="mobile-menu-map-icon"
         className={MVStyle.mobileMenuBtn}
         onClick={_ => handleClick()}
         xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +69,7 @@ module MapIcon = {
         <line x1="16" y1="6" x2="16" y2="22" />
       </svg>
       // add ref here to close the window if we click outside of it
-      mobileMenu
+      mobileMenuPopoverItem
       // <MobileMenu isOpen menuItems />
     </div>
   }
