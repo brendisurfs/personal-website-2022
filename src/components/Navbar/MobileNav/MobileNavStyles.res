@@ -8,20 +8,19 @@ module MVStyle = {
 `->Emotion.rawCss
 
   let mobileTitle = `
-  color: white; 
+  color: white;
   font-size: 20px;
   text-transform: uppercase;
   font-family: Crasey, sans-serif;
   `->Emotion.rawCss
 
   let mobileMenuBtn = `
-    cursor: pointer; 
+    cursor: pointer;
   `->Emotion.rawCss
 
   let menuDropdown = `
-  transition: right 0.5s ease-in-out;
-  top: 5%;
-  position: absolute; 
+  top: 10%;
+  position: absolute;
   width: 200px;
   height: 200px;
   background: white;
