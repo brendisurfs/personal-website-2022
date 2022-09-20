@@ -8,3 +8,7 @@ I decided it was time to write a new website, and doing it in ReScript seemed li
 - Three.js (will attempt at binding with ReScript)
 
 The only small pain was getting GraphQL set up, but Apollo via ReScript is pretty powerful and very easy to use, + fully typed which has already saved me a lot of time.
+
+
+### Previews
+<img width="1253" alt="image" src="https://user-images.githubusercontent.com/64713032/191373319-505c0ab9-93a5-4319-82eb-0f4830657c0a.png">
