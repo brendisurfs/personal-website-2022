@@ -1,7 +1,7 @@
 open Queries
 open FilterOption
-// listing component for writings home page, not detail.
 
+// listing component for writings home page, not detail.
 @react.component
 let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
   // map over and filter out the data from poly variants
@@ -12,7 +12,7 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
     }
   )
 
-  let stuff = Belt.Array.map(comps, comp => {
+  let writingDisplay = Belt.Array.map(comps, comp => {
     switch comp {
     | Some(c) =>
       <div key={Belt.Option.getWithDefault(c.title, "")}>
@@ -24,5 +24,5 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
   })
 
   open ListStyles
-  <div className={ListStyle.listItem}> {stuff->React.array} </div>
+  <div className={ListStyle.listItem}> {writingDisplay->React.array} </div>
 }

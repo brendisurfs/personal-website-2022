@@ -30,6 +30,23 @@ module PageQuery = %graphql(`
 }
 `)
 
+module BlogDetailQuery = %graphql(`
+query BlogDetailQuery($blogSlug: String!) {
+  componentBlog(filter: {slug: {eq: $blogSlug}}) {
+    title
+    postDate
+    tags {
+      id
+      tagTitle
+    }
+    body {
+      value
+      links
+    }
+  }
+}
+`)
+
 module ProjectsQuery = %graphql(`
 query ProjectsQuery {
   workProjects: allComponentProjectLists {
