@@ -1,4 +1,5 @@
 open Queries
+open Belt
 open FilterOption
 
 // listing component for writings home page, not detail.
@@ -12,12 +13,27 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
     }
   )
 
+  // function to handle clicking on the blog detail.
+  let handleClickBlogTitle: (ReactEvent.Mouse.t, option<string>) => unit = (target, slug) => {
+    switch slug {
+    | Some(sluggy) => RescriptReactRouter.push("/writing/" ++ sluggy)
+    | None => ()
+    }
+    Js.log("switch to new url here")
+  }
+
   let writingDisplay = Belt.Array.map(comps, comp => {
     switch comp {
     | Some(c) =>
-      <div key={Belt.Option.getWithDefault(c.title, "")}>
-        <h3> {c.title->filterOption} </h3>
-        <div> {c.postDate->Belt.Option.getExn->Js.Json.stringify->React.string} </div>
+      let postDate = c.postDate->Belt.Option.getExn
+      let jsonPostDate = postDate->Js.Json.stringify
+      // formatted by taking away quotes.
+      let formattedPostDate = Js.String2.replaceByRe(jsonPostDate, %re(`/"/g`), "")->React.string
+      Js.log(c.slug)
+
+      <div
+        key={Belt.Option.getWithDefault(c.slug, "")} onClick={x => handleClickBlogTitle(x, c.slug)}>
+        <h3> {c.title->filterOption} </h3> <div> {formattedPostDate} </div>
       </div>
     | None => ""->React.string
     }

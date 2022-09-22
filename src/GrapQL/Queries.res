@@ -24,6 +24,7 @@ module PageQuery = %graphql(`
         ...on ComponentBlogRecord {
           title
           postDate
+          slug
         }
       }
   }
