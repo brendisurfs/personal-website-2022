@@ -8,7 +8,7 @@ use bevy::{
 };
 
 fn main() {
-    let wasm_app = App::new()
+    App::new()
         .insert_resource(WindowDescriptor {
             width: 500.,
             height: 500.,
@@ -17,7 +17,8 @@ fn main() {
         })
         .insert_resource(ClearColor(Color::rgb(1., 1., 1.)))
         .add_plugins(DefaultPlugins)
-        .add_startup_system(setup);
+        .add_startup_system(setup)
+        .run();
 }
 
 // setup for basic 3d scene.
