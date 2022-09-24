@@ -6,6 +6,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@wasm": path.resolve(__dirname, "./wasm"),
+      shaders: path.resolve(__dirname, "./wasm/shaders"),
     },
   },
   define: {
