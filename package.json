@@ -18,7 +18,8 @@
   "devDependencies": {
     "chokidar": "^3.5.3",
     "process": "^0.11.10",
-    "rescript": "^9.1.4"
+    "rescript": "^9.1.4",
+    "vite-plugin-glsl": "^0.4.0"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
