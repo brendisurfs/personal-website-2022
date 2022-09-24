@@ -1,0 +1,33 @@
+{
+  "jsc": {
+    "baseUrl": "./src",
+    "paths": {
+      "@modules/*": [
+        "./modules/*"
+      ]
+    },
+    "target": "es2020",
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false
+    },
+    "minify": {
+      "compress": false,
+      "mangle": {
+        "toplevel": false,
+        "keep_classnames": false,
+        "keep_fnames": false,
+        "keep_private_props": false,
+        "ie8": false,
+        "safari10": false
+      }
+    },
+    "loose": false
+  },
+  "module": {
+    "type": "es6"
+  },
+  "minify": true,
+  "isModule": true
+}
+

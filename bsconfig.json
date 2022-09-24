@@ -2,7 +2,7 @@
   "name": "new-website-rescript",
   "version": "0.1.0",
   "sources": {
-    "dir": "src",
+    "dir": "src/",
     "subdirs": true
   },
   "suffix": ".bs.js",
