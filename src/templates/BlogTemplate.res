@@ -1,28 +1,32 @@
 open Layout
 open Queries
 // takes in the data, use the router.
-
-@react.component
-let make = (~slug) => {
-  switch BlogDetailQuery.use({blogSlug: slug}) {
-  | {loading: true} => Js.log("...one sec")
-  | {error: Some(_error)} => Js.log("error loading writing")
-  | {data: Some(data)} => Js.log(data)
-  | _ => Js.log("unknown error")
-  }
-
-  <Layout> <div> {"This is a template "->React.string} </div> </Layout>
-}
-
 module BlogLayout = {
+  open Belt
   type blogDetailPayload = Queries.BlogDetailQuery.t
 
   @react.component
   let make = (~data: BlogDetailQuery.BlogDetailQuery_inner.t) => {
     switch data.componentBlog {
-    | Some(v) => Js.log(v)
+    | Some(v) => {
+        let unwrappedData = Option.getExn(v.body)->Js.Json.stringifyAny
+        let jsonData = unwrappedData->Option.getExn
+        Js.log("woo: " ++ jsonData)
+      }
     | None => Js.log("none")
     }
     <div />
   }
+}
+
+@react.component
+let make = (~slug) => {
+  let blogDetailElement = switch BlogDetailQuery.use({blogSlug: slug}) {
+  | {loading: true} => <div> {"one sec..."->React.string} </div>
+  | {error: Some(_error)} => <div> {"error while loading!"->React.string} </div>
+  | {data: Some(data)} => <BlogLayout data />
+  | _ => <div> {"weird, nothing found..."->React.string} </div>
+  }
+
+  <Layout> <div> blogDetailElement </div> </Layout>
 }
