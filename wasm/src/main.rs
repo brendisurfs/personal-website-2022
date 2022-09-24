@@ -1,8 +1,9 @@
 use bevy::{
     pbr::MaterialPipelineKey,
     prelude::{
-        default, shape, App, Assets, Camera3dBundle, ClearColor, Color, Commands, Material, Mesh,
-        PbrBundle, PointLight, PointLightBundle, ResMut, StandardMaterial, Transform, Vec3,
+        default, shape, App, Assets, Camera3dBundle, ClearColor, Color, Commands, Material,
+        MaterialMeshBundle, MaterialPlugin, Mesh, PbrBundle, PointLight, PointLightBundle, ResMut,
+        StandardMaterial, Transform, Vec3,
     },
     reflect::TypeUuid,
     render::{
@@ -28,6 +29,7 @@ fn main() {
         })
         .insert_resource(ClearColor(Color::rgb(0., 0., 0.)))
         .add_plugins(DefaultPlugins)
+        .add_plugin(MaterialPlugin::<CustomFresnelMaterial>::default())
         .add_startup_system(setup)
         .run();
 }
@@ -36,12 +38,12 @@ fn main() {
 pub fn setup(
     mut commands: Commands,
     mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>,
+    mut materials: ResMut<Assets<CustomFresnelMaterial>>,
 ) {
     // spawn cube
-    commands.spawn_bundle(PbrBundle {
+    commands.spawn_bundle(MaterialMeshBundle {
         mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
-        material: materials.add(Color::BLUE.into()),
+        material: materials.add(CustomFresnelMaterial { color: Color::BLUE }),
         transform: Transform::from_xyz(0.0, 0.5, 0.0),
         ..default()
     });
