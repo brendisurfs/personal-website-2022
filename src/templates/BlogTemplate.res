@@ -1,6 +1,7 @@
 open Layout
 open Queries
 open Emotion
+open Breakpoints
 
 module BlogStyle = {
   let container = `
@@ -14,7 +15,10 @@ module BlogStyle = {
   let textBlock = `
   font-family: sans-serif;
   font-weight: 300;
-  width: 50%;
+  max-width: 75%;
+  ${md(`
+  width: 60%;
+  `)}
   display: flex;
   flex-direction: column;
   color: white;
@@ -31,8 +35,19 @@ module BlogLayout = {
   let make = (~data: BlogDetailQuery.BlogDetailQuery_inner.t) => {
     switch data.componentBlog {
     | Some(v) => {
+        // blog tags
+        let tags = v.tags->Belt.Array.map(tag => {
+          let tagTitle = Option.getWithDefault(tag.tagTitle, "")
+          let fmtTag = ` #${tagTitle} `
+          fmtTag->React.string
+        })
         let unwrappedData = render(v.body->Option.getExn)
-        <div className={BlogStyle.textBlock} dangerouslySetInnerHTML={"__html": unwrappedData} />
+
+        // render
+        <>
+          <div className={BlogStyle.textBlock}> {"tags:"->React.string} {tags->React.array} </div>
+          <div className={BlogStyle.textBlock} dangerouslySetInnerHTML={"__html": unwrappedData} />
+        </>
       }
     | None => <div />
     }

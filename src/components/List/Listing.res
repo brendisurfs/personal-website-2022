@@ -1,5 +1,6 @@
 open Queries
 open FilterOption
+open ListStyles
 
 // listing component for writings home page, not detail.
 @react.component
@@ -29,13 +30,16 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
       let formattedPostDate = Js.String2.replaceByRe(jsonPostDate, %re(`/"/g`), "")->React.string
 
       <div
-        key={Belt.Option.getWithDefault(c.slug, "")} onClick={x => handleClickBlogTitle(x, c.slug)}>
+        className={ListStyle.listItem}
+        key={Belt.Option.getWithDefault(c.slug, "")}
+        onClick={x => handleClickBlogTitle(x, c.slug)}>
         <h3> {c.title->filterOption} </h3> <div> {formattedPostDate} </div>
       </div>
     | None => ""->React.string
     }
   })
 
-  open ListStyles
-  <div className={ListStyle.listItem}> {writingDisplay->React.array} </div>
+  <div className={ListStyle.container}>
+    <div className="list-items"> {writingDisplay->React.array} </div>
+  </div>
 }
