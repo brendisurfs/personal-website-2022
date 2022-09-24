@@ -1,6 +1,7 @@
 import * as THREE from "three";
 
-import fragShader from "./Shaders/testing.glsl";
+import fragShader from "../../glsl/test.glsl";
+console.log(fragShader);
 
 const scene = new THREE.Scene();
 
