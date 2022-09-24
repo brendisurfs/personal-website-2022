@@ -18,7 +18,7 @@ fn main() {
             canvas: Some("canvas".to_string()),
             ..default()
         })
-        .insert_resource(ClearColor(Color::rgb(1., 1., 1.)))
+        .insert_resource(ClearColor(Color::rgb(0., 0., 0.)))
         .add_plugins(DefaultPlugins)
         .add_startup_system(setup)
         .run();

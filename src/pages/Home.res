@@ -1,15 +1,21 @@
 open Layout
 
-%%raw(`
-      import init from "@wasm/out-wasm/brendancreates-wasm.js";
-      const run = async () => {
-          await init();
-      }
-      run().catch(console.error);
-`)
+// styles
+module Canvas = {
+  let container = `
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`->Emotion.rawCss
+}
 
+//component
 @react.component
 let make = () => {
   /* <Layout> <div> {"Testing Three on Homepage"->React.string} </div> <ThreeCanvas /> </Layout> */
-  <Layout> <div> {"Testing Three on Homepage"->React.string} </div> <canvas id="bevy" /> </Layout>
+
+  <Layout>
+    <div> {"Testing Three on Homepage"->React.string} </div>
+    <div className={Canvas.container}> <canvas id="bevy" /> </div>
+  </Layout>
 }

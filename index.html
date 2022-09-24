@@ -24,5 +24,12 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/lib/es6/src/index.bs.js"></script>
+    <script type="module">
+      import init from "@wasm/out-wasm/brendancreates-wasm.js";
+      const run = async () => {
+        await init();
+      };
+      run().catch(console.error);
+    </script>
   </body>
 </html>
