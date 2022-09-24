@@ -1,5 +1,5 @@
-@module("./TestingThree.js") external renderTarget: unit => unit = "renderTarget"
-@module("./TestingThree.js") external renderCanvas: unit => Dom.element = "renderCanvas"
+@module("./ThreeRenderer.js") external renderTarget: unit => unit = "renderTarget"
+@module("./ThreeRenderer.js") external renderCanvas: unit => Dom.element = "renderCanvas"
 
 module WebApi = {
   module Element = {

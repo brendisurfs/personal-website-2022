@@ -1,0 +1,5 @@
+{
+  "verbose": true,
+  "watch": ["src/components/ThreeJS/ThreeRenderer.ts", "src/glsl/*"],
+  "exec": "yarn compile-three && cp -r ./src/glsl ./lib/es6/src"
+}
