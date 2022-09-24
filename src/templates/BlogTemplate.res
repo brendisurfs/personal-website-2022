@@ -13,3 +13,16 @@ let make = (~slug) => {
 
   <Layout> <div> {"This is a template "->React.string} </div> </Layout>
 }
+
+module BlogLayout = {
+  type blogDetailPayload = Queries.BlogDetailQuery.t
+
+  @react.component
+  let make = (~data: BlogDetailQuery.BlogDetailQuery_inner.t) => {
+    switch data.componentBlog {
+    | Some(v) => Js.log(v)
+    | None => Js.log("none")
+    }
+    <div />
+  }
+}
