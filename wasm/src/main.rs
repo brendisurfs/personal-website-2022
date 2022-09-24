@@ -1,7 +1,15 @@
 use bevy::{
+    pbr::MaterialPipelineKey,
     prelude::{
-        default, shape, App, Assets, Camera3dBundle, ClearColor, Color, Commands, Mesh, PbrBundle,
-        PointLight, PointLightBundle, ResMut, StandardMaterial, Transform, Vec3,
+        default, shape, App, Assets, Camera3dBundle, ClearColor, Color, Commands, Material, Mesh,
+        PbrBundle, PointLight, PointLightBundle, ResMut, StandardMaterial, Transform, Vec3,
+    },
+    reflect::TypeUuid,
+    render::{
+        mesh::MeshVertexBufferLayout,
+        render_resource::{
+            AsBindGroup, RenderPipelineDescriptor, ShaderRef, SpecializedMeshPipelineError,
+        },
     },
     window::WindowDescriptor,
     DefaultPlugins,
@@ -60,4 +68,36 @@ pub fn setup(
     };
 
     commands.spawn_bundle(cam_bundle);
+}
+
+#[derive(AsBindGroup, Clone, TypeUuid)]
+#[uuid = "4ee9c363-1124-4113-890e-199d81b00281"]
+pub struct CustomFresnelMaterial {
+    #[uniform(0)]
+    color: Color,
+}
+
+impl Material for CustomFresnelMaterial {
+    fn vertex_shader() -> ShaderRef {
+        "shaders/fresnel_mat.vert".into()
+    }
+    fn fragment_shader() -> ShaderRef {
+        "shaders/fresnel_mat.frag".into()
+    }
+
+    // since glsl uses main as an entry point, we override that here.
+    fn specialize(
+        _pipeline: &bevy::pbr::MaterialPipeline<Self>,
+        descriptor: &mut RenderPipelineDescriptor,
+        _layout: &MeshVertexBufferLayout,
+        _key: MaterialPipelineKey<Self>,
+    ) -> Result<(), SpecializedMeshPipelineError> {
+        descriptor.vertex.entry_point = "main".into();
+        descriptor
+            .fragment
+            .as_mut()
+            .expect("fragment to be mut")
+            .entry_point = "main".into();
+        Ok(())
+    }
 }
