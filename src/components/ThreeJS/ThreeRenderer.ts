@@ -1,8 +1,5 @@
 import * as THREE from "three";
 
-import vertexShader from "../../glsl/test.glsl";
-import fragmentShader from "../../glsl/fragment.glsl";
-
 const scene = new THREE.Scene();
 
 // CAMERA ---
@@ -21,12 +18,13 @@ geometry.rotateY(20);
 
 const material = new THREE.MeshNormalMaterial();
 
-const customGLSLMaterial = new THREE.RawShaderMaterial({
-  vertexShader: vertexShader,
-  fragmentShader: fragmentShader,
-});
-
-const mesh = new THREE.Mesh(geometry, customGLSLMaterial);
+// NO CUSTOM MATS FOR NOW
+// const customGLSLMaterial = new THREE.RawShaderMaterial({
+//   vertexShader: "",
+//   fragmentShader: "",
+// });
+//
+const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
 // RENDERER
@@ -37,15 +35,14 @@ export const renderCanvas = () => {
 };
 
 function animation(time: number) {
-  mesh.rotation.x = time / 2000;
-  mesh.rotation.y = time / 1000;
-  // renderer.render(scene, camera);
+  mesh.rotation.x = time / 4000;
+  mesh.rotation.y = time / 2000;
+  renderer.render(scene, camera);
 }
 //
 // exports the render target to Rescript.
 export const renderTarget = () => {
-  // renderer.setAnimationLoop(animation);
-  renderer.render(scene, camera);
+  renderer.setAnimationLoop(animation);
 };
 
 // animation update
