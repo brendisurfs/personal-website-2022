@@ -1,5 +1,7 @@
 import * as THREE from "three";
 
+import fragShader from "public/shaders/test.glsl";
+
 const scene = new THREE.Scene();
 
 // CAMERA ---
@@ -13,21 +15,13 @@ camera.position.z = 1;
 
 const grid = new THREE.PlaneGeometry(2.0, 2.0);
 const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+geometry.rotateX(10);
+geometry.rotateY(20);
+
 const material = new THREE.MeshNormalMaterial();
 
 const customGLSLMaterial = new THREE.RawShaderMaterial({
-  vertexShader: `
-        uniform mat4 projectionMatrix;
-        uniform mat4 viewMatrix;
-        uniform mat4 modelMatrix;
-
-        attribute vec3 position;
-
-        void main()
-        {
-            gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
-        }
-  `,
+  vertexShader: fragShader,
   fragmentShader: `
     precision mediump float;
 
@@ -38,7 +32,7 @@ const customGLSLMaterial = new THREE.RawShaderMaterial({
   `,
 });
 
-const mesh = new THREE.Mesh(grid, customGLSLMaterial);
+const mesh = new THREE.Mesh(geometry, customGLSLMaterial);
 scene.add(mesh);
 
 // RENDERER
@@ -51,12 +45,12 @@ export const renderCanvas = () => {
 function animation(time: number) {
   mesh.rotation.x = time / 2000;
   mesh.rotation.y = time / 1000;
-  renderer.render(scene, camera);
+  // renderer.render(scene, camera);
 }
 //
 // exports the render target to Rescript.
 export const renderTarget = () => {
-  renderer.setAnimationLoop(animation);
+  // renderer.setAnimationLoop(animation);
   renderer.render(scene, camera);
 };
 
