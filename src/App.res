@@ -2,6 +2,7 @@ module App = {
   @react.component
   let make = () => {
     let url = RescriptReactRouter.useUrl()
+    Js.log(url.path)
 
     switch url.path {
     | list{} | list{"home"} => <Home />

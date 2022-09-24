@@ -1,5 +1,4 @@
 open Queries
-open Belt
 open FilterOption
 
 // listing component for writings home page, not detail.
@@ -16,7 +15,7 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
   // function to handle clicking on the blog detail.
   let handleClickBlogTitle: (ReactEvent.Mouse.t, option<string>) => unit = (_target, slug) => {
     switch slug {
-    | Some(sluggy) => RescriptReactRouter.push(`writing/${sluggy}`)
+    | Some(sluggy) => RescriptReactRouter.push(`/writing/${sluggy}`)
     | None => ()
     }
   }
