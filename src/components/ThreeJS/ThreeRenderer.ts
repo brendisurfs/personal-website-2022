@@ -1,13 +1,13 @@
 import * as THREE from "three";
 
-import fragShader from "../../glsl/test.glsl";
-console.log(fragShader);
+import vertexShader from "../../glsl/test.glsl";
+import fragmentShader from "../../glsl/fragment.glsl";
 
 const scene = new THREE.Scene();
 
 // CAMERA ---
 const camera = new THREE.PerspectiveCamera(
-  70,
+  35,
   window.innerWidth / window.innerHeight,
   0.01,
   10
@@ -22,15 +22,8 @@ geometry.rotateY(20);
 const material = new THREE.MeshNormalMaterial();
 
 const customGLSLMaterial = new THREE.RawShaderMaterial({
-  vertexShader: fragShader,
-  fragmentShader: `
-    precision mediump float;
-
-    void main()
-    {
-      gl_FragColor = vec4(1.0,0.0,0.0,1.0);
-    }
-  `,
+  vertexShader: vertexShader,
+  fragmentShader: fragmentShader,
 });
 
 const mesh = new THREE.Mesh(geometry, customGLSLMaterial);
