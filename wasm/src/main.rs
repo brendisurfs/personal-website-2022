@@ -15,7 +15,7 @@ fn main() {
         .insert_resource(WindowDescriptor {
             width: 500.,
             height: 500.,
-            canvas: Some("#3d-canvas".to_string()),
+            canvas: Some("canvas".to_string()),
             ..default()
         })
         .insert_resource(ClearColor(Color::rgb(1., 1., 1.)))
