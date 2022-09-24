@@ -1,0 +1,31 @@
+[package]
+name = "brendancreates-wasm"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bevy = "*"
+# bevy = { version = "*", features = ["dynamic"] }
+wasm-bindgen = "0.2.83"
+web-sys = { version = "0.3.60", features = [
+  "Document",
+  "Window",
+  "Element",
+  "Node",
+  "HtmlElement",
+  "console",
+] }
+
+wee_alloc = { version = "0.4.5" }
+
+
+[profile.dev]
+opt-level = "z"
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+opt-level = "s"
