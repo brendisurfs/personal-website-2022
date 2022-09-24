@@ -6,8 +6,11 @@ use bevy::{
     window::WindowDescriptor,
     DefaultPlugins,
 };
+use web_sys::console;
 
 fn main() {
+    console::log_1(&"hello from wasm test!".into());
+
     App::new()
         .insert_resource(WindowDescriptor {
             width: 500.,

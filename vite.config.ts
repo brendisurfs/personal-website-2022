@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, Plugin, TransformResult, UserConfig } from "vite";
 import path from "path";
 
 export default defineConfig({
@@ -10,5 +10,6 @@ export default defineConfig({
   },
   define: {
     "process.env": process.env,
+    "application/wasm": ["wasm"],
   },
 });

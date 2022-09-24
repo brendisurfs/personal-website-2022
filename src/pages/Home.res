@@ -2,7 +2,10 @@ open Layout
 
 %%raw(`
       import init from "@wasm/out-wasm/brendancreates-wasm.js";
-      init("@wasm/out-wasm/brendancreates-wasm_bg.wasm");
+      const run = async () => {
+          await init();
+      }
+      run().catch(console.error);
 `)
 
 @react.component
