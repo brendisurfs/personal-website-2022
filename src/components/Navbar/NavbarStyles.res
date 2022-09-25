@@ -2,11 +2,10 @@ open Emotion
 
 module Nav = {
   let container = `
-  padding: 1rem 2rem;
   display: flex;
   background: black;
   flex-direction: row;
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   justify-content: center;
   z-index: 100;
@@ -14,6 +13,7 @@ module Nav = {
 
   let innerWrapper = `
   width: 100%;
+  padding: 1rem 2rem;
   display: flex;
   align-items: baseline;
   flex-direction: row;
@@ -35,6 +35,9 @@ module Nav = {
   align-items: center;
   gap: 10px;
   justify-content: center;
+  h1 {
+    margin: 0;
+  }
 `->rawCss
 
   let buttonWrapper = `
@@ -52,5 +55,15 @@ module Nav = {
   &:hover {
     cursor: pointer;
   }
+  `->rawCss
+
+  let boxButton = `
+  display: inline-block;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: white;
+  color: white;
+
   `->rawCss
 }
