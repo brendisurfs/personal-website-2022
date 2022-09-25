@@ -43,12 +43,14 @@ module DotIcon = {
         comp
       })->React.array
 
+      // NOTE: because its harder to pass in dynamic values into our css,
+      // We just use inline styles.
       <div
         id="menu-popover"
         className={MVStyle.menuDropdown}
         style={ReactDOM.Style.make(
           ~top=posPercent,
-          ~transition="top 0.75s ease-in-out",
+          ~transition="top 0.25s ease-in-out",
           ~zIndex="100",
           (),
         )}>
@@ -71,7 +73,6 @@ let make = (~topbarList) => {
       <div className={Nav.title} onClick={_e => changeUrl("home")}>
         <h1> {"Brendancreates"->React.string} </h1>
       </div>
-      // DOT ICON HERE
       <DotIcon menuItems={topbarList} />
     </div>
   </nav>

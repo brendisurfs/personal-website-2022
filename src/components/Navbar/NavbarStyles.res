@@ -15,7 +15,7 @@ module Nav = {
   width: 100%;
   padding: 1rem 2rem;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
@@ -25,7 +25,7 @@ module Nav = {
   z-index: 100;
   font-family: Crasey, sans-serif;
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 1rem;
   color: white;
   &:hover {
     cursor: pointer;
