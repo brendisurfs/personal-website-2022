@@ -43,6 +43,9 @@ module Card = {
 `->rawCss
 
   let sectionTitle = `
+  padding: 0 2rem;
+  font-family: sans-serif;
+  font-weight: bold;
   color: white;
   `->rawCss
 
@@ -56,6 +59,7 @@ module Card = {
   // GRID
   let cardGrid = `
   display: grid;
+  padding: 2rem;
   grid-template-columns: repeat(1, 1fr);
 
   ${Breakpoints.xs(`

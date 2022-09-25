@@ -7,5 +7,5 @@ let make = () => {
 
   let copyText = <div> {" Brendan Prednis "->React.string} currentYear </div>
 
-  <footer className={footerWrapper}> copyText </footer>
+  // <footer className={footerWrapper}> copyText </footer>
 }
