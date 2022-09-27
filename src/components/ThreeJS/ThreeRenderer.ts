@@ -1,13 +1,24 @@
-import * as THREE from "three";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { RGBShiftShader } from "three/examples/jsm/shaders/RGBShiftShader";
+import {
+  BoxGeometry,
+  Mesh,
+  MeshNormalMaterial,
+  PerspectiveCamera,
+  PlaneGeometry,
+  Scene,
+  ShaderMaterial,
+  Vector2,
+  WebGLRenderer,
+} from "three";
 
-const scene = new THREE.Scene();
+const scene = new Scene();
+let uniformMouse = new Vector2(0.0, 0.0);
 
 // CAMERA ---
-const camera = new THREE.PerspectiveCamera(
+const camera = new PerspectiveCamera(
   35,
   window.innerWidth / window.innerHeight,
   0.01,
@@ -15,24 +26,24 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.z = 1;
 
-const grid = new THREE.PlaneGeometry(2.0, 2.0);
-const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+const grid = new PlaneGeometry(2.0, 2.0);
+const geometry = new BoxGeometry(0.2, 0.2, 0.2);
 geometry.rotateX(10);
 geometry.rotateY(20);
 
-const material = new THREE.MeshNormalMaterial();
+const material = new MeshNormalMaterial();
 
-// NO CUSTOM MATS FOR NOW
-// const customGLSLMaterial = new THREE.RawShaderMaterial({
-//   vertexShader: "",
-//   fragmentShader: "",
-// });
+// custom overlay.
+const customGLSLMaterial = new ShaderMaterial({
+  vertexShader: "",
+  fragmentShader: "",
+});
 //
-const mesh = new THREE.Mesh(geometry, material);
+const mesh = new Mesh(geometry, material);
 scene.add(mesh);
 
 // RENDERER
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
 
 // POST PROCESSING
@@ -43,9 +54,9 @@ effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 const renderPass = new RenderPass(scene, camera);
 effectComposer.addPass(renderPass);
 
-const getMousePos = () => {
-  document.addEventListener("mousemove", (ev: MouseEvent) => {});
-};
+document.addEventListener("mousemove", (ev: MouseEvent) => {
+  uniformMouse.x = ev.clientX;
+});
 
 const rgbShift = new ShaderPass(RGBShiftShader);
 rgbShift.enabled = true;

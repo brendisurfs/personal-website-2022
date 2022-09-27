@@ -38,7 +38,7 @@ module MVStyle = {
   `->Emotion.rawCss
 
   let menuDropownButton = `
-  font-size: 2rem;
+  font-size: 4rem;
   display: block;
   cursor: pointer;
   color: lightgray;
