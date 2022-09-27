@@ -32,3 +32,10 @@ let xl = styles => {
       ${styles}
     }`
 }
+
+let xxl = styles => {
+  `
+  @media (min-width: 1800px) {
+      ${styles}
+    }`
+}

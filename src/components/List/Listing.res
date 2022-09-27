@@ -1,6 +1,7 @@
 open Queries
 open FilterOption
 open ListStyles
+// raw css for transition
 
 // listing component for writings home page, not detail.
 @react.component
@@ -29,11 +30,14 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
       // formatted by taking away quotes.
       let formattedPostDate = Js.String2.replaceByRe(jsonPostDate, %re(`/"/g`), "")->React.string
 
-      <div
-        className={ListStyle.listItem}
-        key={Belt.Option.getWithDefault(c.slug, "")}
-        onClick={x => handleClickBlogTitle(x, c.slug)}>
-        <h3> {c.title->filterOption} </h3> <div> {formattedPostDate} </div>
+      <div>
+        <div
+          className={"listing-container"}
+          key={Belt.Option.getWithDefault(c.slug, "")}
+          onClick={x => handleClickBlogTitle(x, c.slug)}>
+          <h3> {c.title->filterOption} </h3> <div> {formattedPostDate} </div>
+        </div>
+        <div className="bottom-border" />
       </div>
     | None => ""->React.string
     }

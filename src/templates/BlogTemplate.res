@@ -6,19 +6,47 @@ open Breakpoints
 module BlogStyle = {
   let container = `
   display: flex;
+  padding-top: 2rem;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
   `->rawCss
 
+  let wrapper = `
+    display: flex;
+    max-width: 50%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  ${Breakpoints.xxl(`
+    max-width: 25%;
+  `)}
+  `->rawCss
+
+  let title = `
+    font-size: 2rem;
+    font-weight: light;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    max-width: 50%;
+    letter-spacing: 4px;
+    margin: 2rem 0;
+    color: white;
+  `->rawCss
+
+  let tagStyles = `
+    color: orange;
+    display: flex;
+    width: 100%;
+  `->rawCss
+
   let textBlock = `
   font-family: sans-serif;
+  font-size: 18px;
   font-weight: 300;
-  max-width: 75%;
-  ${md(`
-  width: 60%;
-  `)}
+  line-height: 32px;
+
   display: flex;
   flex-direction: column;
   color: white;
@@ -35,6 +63,7 @@ module BlogLayout = {
   let make = (~data: BlogDetailQuery.BlogDetailQuery_inner.t) => {
     switch data.componentBlog {
     | Some(v) => {
+        let blogTitle = Option.getWithDefault(v.title, "")->React.string
         // blog tags
         let tags = v.tags->Belt.Array.map(tag => {
           let tagTitle = Option.getWithDefault(tag.tagTitle, "")
@@ -52,8 +81,13 @@ module BlogLayout = {
 
         // render
         <>
-          <div className={BlogStyle.textBlock}> {"tags:"->React.string} {tags->React.array} </div>
-          <div className={BlogStyle.textBlock} dangerouslySetInnerHTML={"__html": unwrappedData} />
+          <h2 className={BlogStyle.title}> blogTitle </h2>
+          <div className={BlogStyle.wrapper}>
+            <div className={BlogStyle.tagStyles}> {"tags:"->React.string} {tags->React.array} </div>
+            <div
+              className={BlogStyle.textBlock} dangerouslySetInnerHTML={"__html": unwrappedData}
+            />
+          </div>
         </>
       }
     | None => <div />

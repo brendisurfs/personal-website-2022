@@ -14,13 +14,27 @@ module ListStyle = {
     cursor: pointer;
     font-weight: 300;
     font-family: sans-serif;
-    transition: color 0.15s ease-in-out;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px solid grey;
     justify-content: space-between;
     &:hover {
-      color: salmon;
+      color: #c89720;
     }
+
+  @keyframes animBorder {
+    100% {
+      border-bottom: 24px;
+    }
+  }
+  `->rawCss
+
+  let bottomBorder = `
+    width: 100%;
+    color: red;
+    height: 1px;
+    background: red;
+
+
+
   `->rawCss
 }
