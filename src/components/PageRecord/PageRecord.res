@@ -5,7 +5,7 @@ open FilterOption
 let make = (~data: PageQuery.PageQuery_inner.t_data) => {
   // -- data
   open DatoParser
-  let bodyText = render(data.pageText->Belt.Option.getExn)
+  let bodyText = render(data.pageText->Belt.Option.getExn, ())
   // -- view
   open PageRecordStyles
   <div className={PageStyle.container}>

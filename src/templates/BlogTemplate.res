@@ -41,7 +41,7 @@ module BlogLayout = {
           let fmtTag = ` #${tagTitle} `
           fmtTag->React.string
         })
-        let unwrappedData = render(v.body->Option.getExn)
+        let unwrappedData = render(v.body->Option.getExn, ())
         Js.log(unwrappedData)
 
         // render
@@ -62,8 +62,7 @@ let make = (~slug) => {
   | {error: Some(_error)} => <div> {"error while loading!"->React.string} </div>
   | {data: Some(data)} =>
     Js.log(data)
-    // <BlogLayout data />
-    <div />
+    <BlogLayout data />
   | _ => <div> {"weird, nothing found..."->React.string} </div>
   }
 
