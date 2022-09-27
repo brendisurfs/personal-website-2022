@@ -16,16 +16,12 @@ module ListStyle = {
     font-family: sans-serif;
     flex-direction: row;
     align-items: center;
+    transition: color 0.25s ease-in-out;
     justify-content: space-between;
     &:hover {
       color: #c89720;
     }
 
-  @keyframes animBorder {
-    100% {
-      border-bottom: 24px;
-    }
-  }
   `->rawCss
 
   let bottomBorder = `

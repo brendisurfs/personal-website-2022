@@ -50,7 +50,7 @@ module DotIcon = {
         className={MVStyle.menuDropdown}
         style={ReactDOM.Style.make(
           ~top=posPercent,
-          ~transition="top 0.25s ease-in-out",
+          ~transition="top 0.35s ease-in-out",
           ~zIndex="100",
           (),
         )}>
