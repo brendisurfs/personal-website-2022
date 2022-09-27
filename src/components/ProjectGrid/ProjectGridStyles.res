@@ -12,3 +12,14 @@ let typeContainer = `
   width: 100%;
   justify-content: center;
   `->rawCss
+
+let typeItem = `
+  color: white;
+
+  `->rawCss
+
+let typeNavRow = `
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`->rawCss

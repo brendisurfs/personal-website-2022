@@ -2,7 +2,10 @@ open Emotion
 // CARD SECTION
 module Card = {
   let cardContainer = `
-    width: 100%;
+    width: 50%;
+    ${Breakpoints.xxl(`
+      width: 25%;
+    `)}
     display: flex;
     aspect-ratio: 1/1;
     position: relative;
@@ -62,12 +65,13 @@ module Card = {
   padding: 2rem;
   grid-template-columns: repeat(1, 1fr);
 
-  ${Breakpoints.xs(`
-    grid-template-columns: repeat(2,1fr);
-  `)}
-
-  ${Breakpoints.md(`
-    grid-template-columns: repeat(3,1fr);
-  `)}
 `->rawCss
 }
+
+/* ${Breakpoints.xs(` */
+/* grid-template-columns: repeat(2,1fr); */
+/* `)} */
+/*  */
+/* ${Breakpoints.md(` */
+/* grid-template-columns: repeat(3,1fr); */
+/* `)} */

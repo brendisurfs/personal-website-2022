@@ -20,10 +20,24 @@ module TypeGrid = {
   }
 }
 
+module TypeItem = {
+  @react.component
+  let make = (~typeList: array<string>) => {
+    <div className={ProjectGridStyles.typeNavRow}>
+      {Belt.Array.map(typeList, t =>
+        <div className={ProjectGridStyles.typeItem}> {t->React.string} </div>
+      )->React.array}
+    </div>
+  }
+}
+
+// main component
 @react.component
 let make = (~workProjects: array<workProjects>) => {
+  let projectTypeList = workProjects->Belt.Array.map(p => p.projectType->Belt.Option.getExn)
   // -- view
   <div className={typeContainer}>
+    <TypeItem typeList={projectTypeList} />
     {workProjects
     ->Belt.Array.map(proj =>
       <TypeGrid

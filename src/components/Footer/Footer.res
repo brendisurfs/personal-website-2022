@@ -1,9 +1,9 @@
-open FooterStyles
+/* open FooterStyles */
 
-@react.component
-let make = () => {
-  open Js
-  let currentYear = Date.make()->Date.getFullYear->React.float
-
-  let copyText = <div> {" Brendan Prednis "->React.string} currentYear </div>
-}
+/* @react.component */
+/* let make = () => { */
+/* open Js */
+/* let currentYear = Date.make()->Date.getFullYear->React.float */
+/*  */
+/* let copyText = <div> {" Brendan Prednis "->React.string} currentYear </div> */
+/* } */

@@ -1,7 +1,6 @@
 open Layout
 open Queries
 open Emotion
-open Breakpoints
 
 module BlogStyle = {
   let container = `
