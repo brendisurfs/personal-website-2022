@@ -58,16 +58,15 @@ module Nav = {
   `->rawCss
 
   let boxButton = `
-  position: relative;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  width: 2.5rem;
+  height: 2.5rem;
   cursor: pointer;
   background: white;
+  position: relative;
+  border-radius: 30px;
+  transition: width 0.2s ease-in-out;
   &:hover {
-    width: 60px;
-    border-radius: 12px;
+    width: rem;
   }
   `->rawCss
 
