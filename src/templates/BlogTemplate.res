@@ -1,7 +1,6 @@
 open Layout
 open Queries
 open Emotion
-open Breakpoints
 
 module BlogStyle = {
   let container = `
@@ -24,15 +23,26 @@ module BlogStyle = {
   `)}
   `->rawCss
 
+  let topContainer = `
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  `->rawCss
+
   let title = `
     font-size: 2rem;
     font-weight: light;
     font-family: sans-serif;
     text-transform: uppercase;
-    max-width: 50%;
-    letter-spacing: 4px;
     margin: 2rem 0;
+    letter-spacing: 4px;
     color: white;
+  `->rawCss
+
+  let backButton = `
+    color: white;
+    cursor: pointer;
+    padding-bottom: 2rem;
   `->rawCss
 
   let tagStyles = `
@@ -71,6 +81,10 @@ module BlogLayout = {
           fmtTag->React.string
         })
 
+        let goBackToWriting = () => {
+          RescriptReactRouter.push("/writing")
+        }
+
         let renderOptions = %raw(`{
             renderBlock({ record, adapter: { renderNode } }) {
               return renderNode("figure", {}, renderNode("img", { src: record.url }));
@@ -81,7 +95,12 @@ module BlogLayout = {
 
         // render
         <>
-          <h2 className={BlogStyle.title}> blogTitle </h2>
+          <div className={BlogStyle.topContainer}>
+            <div className={BlogStyle.backButton} onClick={_e => goBackToWriting()}>
+              {"<- go back"->React.string}
+            </div>
+            <h2 className={BlogStyle.title}> blogTitle </h2>
+          </div>
           <div className={BlogStyle.wrapper}>
             <div className={BlogStyle.tagStyles}> {"tags:"->React.string} {tags->React.array} </div>
             <div
@@ -100,9 +119,7 @@ let make = (~slug) => {
   let blogDetailElement = switch BlogDetailQuery.use({blogSlug: slug}) {
   | {loading: true} => <div> {"one sec..."->React.string} </div>
   | {error: Some(_error)} => <div> {"error while loading!"->React.string} </div>
-  | {data: Some(data)} =>
-    Js.log(data)
-    <BlogLayout data />
+  | {data: Some(data)} => <BlogLayout data />
   | _ => <div> {"weird, nothing found..."->React.string} </div>
   }
 
