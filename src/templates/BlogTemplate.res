@@ -41,8 +41,14 @@ module BlogLayout = {
           let fmtTag = ` #${tagTitle} `
           fmtTag->React.string
         })
-        let unwrappedData = render(v.body->Option.getExn, ())
-        Js.log(unwrappedData)
+
+        let renderOptions = %raw(`{
+            renderBlock({ record, adapter: { renderNode } }) {
+              return renderNode("figure", {}, renderNode("img", { src: record.url }));
+            },
+        }`)
+
+        let unwrappedData = render(v.body->Option.getExn, renderOptions)
 
         // render
         <>
