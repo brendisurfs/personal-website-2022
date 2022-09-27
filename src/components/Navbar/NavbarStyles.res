@@ -64,9 +64,10 @@ module Nav = {
   background: white;
   position: relative;
   border-radius: 30px;
-  transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
   &:hover {
-    width: rem;
+    height: 2rem ;
+    width: 6rem;
   }
   `->rawCss
 
