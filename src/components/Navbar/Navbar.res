@@ -58,12 +58,10 @@ module DotIcon = {
       </div>
     }
 
+    // <div className={Nav.boxPlus} /> <div className={Nav.boxMinus} />
     // -- view
     <div className="menu-btn" style={ReactDOM.Style.make(~overflow="hidden", ())}>
-      <div className={Nav.boxButton} onClick={_e => handleClick()}>
-        <div className={Nav.boxPlus}> {"nice"->React.string} </div>
-      </div>
-      mobileMenuPopoverItem
+      <div className={Nav.boxButton} onClick={_e => handleClick()} /> mobileMenuPopoverItem
     </div>
   }
 }
