@@ -1,7 +1,6 @@
 open Queries
-open FilterOption
 open ListStyles
-// raw css for transition
+open FilterOption
 
 // listing component for writings home page, not detail.
 @react.component
@@ -32,7 +31,7 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
 
       <div>
         <div
-          className={"listing-container"}
+          className={ListStyle.listItem}
           key={Belt.Option.getWithDefault(c.slug, "")}
           onClick={x => handleClickBlogTitle(x, c.slug)}>
           <h3> {c.title->filterOption} </h3> <div> {formattedPostDate} </div>
