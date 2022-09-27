@@ -59,11 +59,17 @@ module Nav = {
 
   let boxButton = `
   display: inline-block;
+  position: relative;
   border-radius: 50%;
   width: 30px;
   height: 30px;
+  cursor: pointer;
   background: white;
   color: white;
 
+  `->rawCss
+
+  let boxPlus = `
+    position: absolute;
   `->rawCss
 }
