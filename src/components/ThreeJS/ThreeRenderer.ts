@@ -15,7 +15,7 @@ import {
 } from "three";
 
 const scene = new Scene();
-let uniformMouse = new Vector2(0.0, 0.0);
+let uMouse = new Vector2(0.0, 0.0);
 
 // CAMERA ---
 const camera = new PerspectiveCamera(
@@ -35,6 +35,9 @@ const material = new MeshNormalMaterial();
 
 // custom overlay.
 const customGLSLMaterial = new ShaderMaterial({
+  uniforms: {
+    uMouse: { value: new Vector2(-10, -10) },
+  },
   vertexShader: `
 precision mediump float;
 #pragma glslify: snoise = require("glsl-noise/simplex/3d")
@@ -104,7 +107,7 @@ const renderPass = new RenderPass(scene, camera);
 effectComposer.addPass(renderPass);
 
 document.addEventListener("mousemove", (ev: MouseEvent) => {
-  uniformMouse.x = ev.clientX;
+  uMouse.x = ev.clientX;
 });
 
 const rgbShift = new ShaderPass(RGBShiftShader);
