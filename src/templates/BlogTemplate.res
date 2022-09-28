@@ -66,34 +66,27 @@ module BlogStyle = {
 }
 
 // takes in the data, use the router.
+open Belt
 module BlogLayout = {
-  open Belt
-
-  type slug = BlogDetailQuery.t_variables
-  type blogDetailPayload = Queries.BlogDetailQuery.t
-
   @react.component
   let make = (~data: BlogDetailQuery.BlogDetailQuery_inner.t) => {
     switch data.componentBlog {
     | Some(v) => {
         let blogTitle = Option.getWithDefault(v.title, "")->React.string
-        // blog tags
-        let tags = v.tags->Belt.Array.map(tag => {
+        let blogTags = v.tags->Array.map(tag => {
           let tagTitle = Option.getWithDefault(tag.tagTitle, "")
           let fmtTag = ` #${tagTitle} `
           fmtTag->React.string
         })
-
         let inner = v.body->Option.getExn
         let unwrappedData = renderDast(inner)
-        Js.log(unwrappedData)
 
         // router to return to the writing listings page
         let goBackToWriting = () => {
           RescriptReactRouter.push("/writing")
         }
 
-        // render
+        // -- view
         <>
           <div className={BlogStyle.topContainer}>
             <div className={BlogStyle.backButton} onClick={_e => goBackToWriting()}>
@@ -102,7 +95,9 @@ module BlogLayout = {
             <h2 className={BlogStyle.title}> blogTitle </h2>
           </div>
           <div className={BlogStyle.wrapper}>
-            <div className={BlogStyle.tagStyles}> {"tags:"->React.string} {tags->React.array} </div>
+            <div className={BlogStyle.tagStyles}>
+              {"tags:"->React.string} {blogTags->React.array}
+            </div>
             <div
               className={BlogStyle.textBlock} dangerouslySetInnerHTML={"__html": unwrappedData}
             />
