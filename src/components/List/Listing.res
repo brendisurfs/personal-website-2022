@@ -28,8 +28,7 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
       let jsonPostDate = postDate->Js.Json.stringify
       // formatted by taking away quotes.
       let formattedPostDate = Js.String2.replaceByRe(jsonPostDate, %re(`/"/g`), "")->React.string
-
-      <div>
+      <div key={postDate->Js.String2.make}>
         <div
           className={ListStyle.listItem}
           key={Belt.Option.getWithDefault(c.slug, "")}

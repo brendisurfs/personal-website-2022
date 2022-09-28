@@ -42,7 +42,13 @@ query BlogDetailQuery($blogSlug: String!) {
     }
     body {
       value
-      links
+      blocks {
+        id
+        img {
+          url
+          blurhash
+        }
+      }
     }
   }
 }

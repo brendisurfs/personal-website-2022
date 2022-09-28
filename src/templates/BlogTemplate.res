@@ -68,7 +68,8 @@ module BlogStyle = {
 // takes in the data, use the router.
 module BlogLayout = {
   open Belt
-  open DatoParser
+
+  type slug = BlogDetailQuery.t_variables
   type blogDetailPayload = Queries.BlogDetailQuery.t
 
   @react.component
@@ -83,11 +84,14 @@ module BlogLayout = {
           fmtTag->React.string
         })
 
+        let inner = v.body->Option.getExn
+        let unwrappedData = renderDast(inner)
+        Js.log(unwrappedData)
+
+        // router to return to the writing listings page
         let goBackToWriting = () => {
           RescriptReactRouter.push("/writing")
         }
-
-        let unwrappedData = render(v.body->Option.getExn, ())
 
         // render
         <>
