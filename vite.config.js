@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@shaders": path.resolve(__dirname, "src/glsl"),
+      static: path.resolve(__dirname, "static/"),
       utils: path.resolve(__dirname, "src/utils"),
     },
   },

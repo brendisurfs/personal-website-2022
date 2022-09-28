@@ -10,9 +10,9 @@ let make = (~data: PageQuery.PageQuery_inner.t_data) => {
   open PageRecordStyles
   <div className={PageStyle.container}>
     <div className={PageStyle.wrapper}>
-      <h2> {data.pageTitle->filterOption} </h2>
+      <h2 className={PageStyle.title}> {data.pageTitle->filterOption} </h2>
       // NOTE: THIS MUST BE REPLACED BEFORE PROD
-      <div dangerouslySetInnerHTML={"__html": bodyText} />
+      <div className={PageStyle.bodyText} dangerouslySetInnerHTML={"__html": bodyText} />
     </div>
   </div>
 }

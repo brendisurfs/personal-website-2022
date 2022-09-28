@@ -42,9 +42,13 @@ module BlogStyle = {
   `->rawCss
 
   let backButton = `
+    gap: 4px;
     color: white;
+    display: flex;
     cursor: pointer;
+    flex-direction: row;
     padding-bottom: 2rem;
+    align-items: center;
   `->rawCss
 
   let tagStyles = `
@@ -90,7 +94,7 @@ module BlogLayout = {
         <>
           <div className={BlogStyle.topContainer}>
             <div className={BlogStyle.backButton} onClick={_e => goBackToWriting()}>
-              {"<- go back"->React.string}
+              <Arrow /> {"go back"->React.string}
             </div>
             <h2 className={BlogStyle.title}> blogTitle </h2>
           </div>
