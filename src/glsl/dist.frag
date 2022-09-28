@@ -18,7 +18,7 @@ void main() {
   float c = circle(vUv, uMouse, 0.0, 0.2);
   float wave = vWave;
 
-  float r = texture2D(uTexture, newUV.xy += c * (0.1 * 0.5)).r;
+  float r = texture2D(uTexture, newUV.xy += c * (0.1 * 0.5 * wave)).r;
   float g = texture2D(uTexture, newUV.xy += c * (0.1 * 0.525)).g;
   float b = texture2D(uTexture, newUV.xy += c * (0.1 * 0.55)).b;
 

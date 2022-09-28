@@ -33,12 +33,10 @@ const camera = new PerspectiveCamera(
 );
 camera.position.z = 5;
 
-const grid = new PlaneGeometry(3.0, 6.0, 80, 80);
+const grid = new PlaneGeometry(3.0, 5.0, 80, 80);
 const geometry = new BoxGeometry(0.2, 0.2, 0.2);
 geometry.rotateX(10);
 geometry.rotateY(20);
-
-const material = new MeshNormalMaterial();
 
 // custom overlay.
 const customGLSLMaterial = new ShaderMaterial({
@@ -68,9 +66,8 @@ renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
 
 // POST PROCESSING
 const effectComposer = new EffectComposer(renderer);
-effectComposer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.8);
+effectComposer.setSize(window.innerWidth, window.innerHeight);
 effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
 const renderPass = new RenderPass(scene, camera);
 effectComposer.addPass(renderPass);
 
@@ -78,10 +75,6 @@ document.addEventListener("mousemove", (ev: MouseEvent) => {
   uMouse.x = ev.clientX / window.innerWidth;
   uMouse.y = 1.0 - ev.clientY / window.innerHeight;
 });
-
-const rgbShift = new ShaderPass(RGBShiftShader);
-rgbShift.enabled = false;
-effectComposer.addPass(rgbShift);
 
 export const renderCanvas = () => {
   return renderer.domElement;
