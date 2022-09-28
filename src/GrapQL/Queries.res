@@ -43,14 +43,6 @@ query BlogDetailQuery($blogSlug: String!) {
     body {
       value
       links
-      blocks {
-        id
-        img {
-          id
-          url
-          blurhash
-        }
-      }
     }
   }
 }

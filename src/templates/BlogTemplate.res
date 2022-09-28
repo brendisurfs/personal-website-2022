@@ -87,8 +87,7 @@ module BlogLayout = {
           RescriptReactRouter.push("/writing")
         }
 
-        let unwrappedData = renderDast(v.body)
-        Js.log(v.body)
+        let unwrappedData = render(v.body->Option.getExn, ())
 
         // render
         <>
