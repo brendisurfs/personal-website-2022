@@ -35,13 +35,20 @@ let make = (~project as p: t_workProjects_projects) => {
   // create state for image hover
   let (isHover, setIsHover) = React.useState(() => false)
 
+  let handleProjectClick = () => {
+    Js.log(p.title)
+  }
+
   let titleText = p.title->filterOption
   let descriptionText = p.description->filterOption
+
+  let cardUrl = BuildUrl.buildUrl(Option.getExn(p.title))
 
   <div className=Card.cardContainer>
     <div
       onMouseEnter={_e => setIsHover(_ => true)}
       onMouseLeave={_e => setIsHover(_ => false)}
+      onClick={_ => handleProjectClick()}
       className=Card.textContainer>
       <div className=Card.title> {titleText} </div>
       <div className=Card.description> {descriptionText} </div>
