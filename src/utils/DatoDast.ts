@@ -6,10 +6,8 @@ import {
 
 type BlogRecordType = {
   __typename: string;
-  id: any;
-  img: {
-    url: string;
-  };
+  id: string;
+  img: { [param: string]: string };
 };
 
 export function renderDast(
@@ -17,8 +15,8 @@ export function renderDast(
 ) {
   let renderOptions: RenderSettings<BlogRecordType> = {
     renderBlock({ record, adapter: { renderNode } }) {
-      // this is where that generic extends.
       return renderNode("img", {
+        // this is where that generic extends.
         src: record.img.url,
       });
     },
