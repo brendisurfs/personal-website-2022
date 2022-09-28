@@ -1,4 +1,6 @@
-import { render } from "datocms-structured-text-to-html-string";
+import { render, renderBlock } from "datocms-structured-text-to-html-string";
+
+renderBlock({});
 
 const renderOptions = {
   renderBlock({ record, adapter: { renderNode } }) {

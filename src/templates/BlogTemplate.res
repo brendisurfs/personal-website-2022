@@ -2,6 +2,8 @@ open Layout
 open Queries
 open Emotion
 
+@module("./datorender.ts") external renderDast: 'a => string = "renderDast"
+
 module BlogStyle = {
   let container = `
   display: flex;
@@ -85,13 +87,7 @@ module BlogLayout = {
           RescriptReactRouter.push("/writing")
         }
 
-        let renderOptions = %raw(`{
-            renderBlock({ record, adapter: { renderNode } }) {
-              return renderNode("figure", {}, renderNode("img", { src: record.url }));
-            },
-        }`)
-
-        let unwrappedData = render(v.body->Option.getExn, renderOptions)
+        let unwrappedData = renderDast(v.body->Option.getExn)
 
         // render
         <>
