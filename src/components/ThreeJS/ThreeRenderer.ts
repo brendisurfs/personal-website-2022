@@ -124,10 +124,11 @@ effectComposer.setSize(window.innerWidth, window.innerHeight);
 effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 const renderPass = new RenderPass(scene, camera);
-effectComposer.addPass(renderPass);
 
 let customRenderPass = new ShaderPass(customGLSLMaterial);
 customRenderPass.renderToScreen = true;
+
+effectComposer.addPass(renderPass);
 effectComposer.addPass(customRenderPass);
 
 let targetSpeed = 0;
