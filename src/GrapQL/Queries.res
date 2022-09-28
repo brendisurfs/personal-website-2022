@@ -44,6 +44,7 @@ query BlogDetailQuery($blogSlug: String!) {
       value
       links
       blocks {
+        id
         img {
           id
           url

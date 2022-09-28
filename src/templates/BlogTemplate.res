@@ -2,7 +2,7 @@ open Layout
 open Queries
 open Emotion
 
-@module("./datorender.ts") external renderDast: 'a => string = "renderDast"
+@module("../utils/DatoDast.js") external renderDast: 'a => string = "renderDast"
 
 module BlogStyle = {
   let container = `
@@ -87,7 +87,8 @@ module BlogLayout = {
           RescriptReactRouter.push("/writing")
         }
 
-        let unwrappedData = renderDast(v.body->Option.getExn)
+        let unwrappedData = renderDast(v.body)
+        Js.log(v.body)
 
         // render
         <>

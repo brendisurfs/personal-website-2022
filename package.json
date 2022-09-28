@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "compile-three": "swc ./src/components/ThreeJS/ThreeRenderer.ts -o ./lib/es6/src/components/ThreeJS/ThreeRenderer.js",
+    "compile-utils": "swc ./src/utils/DatoDast.ts -o ./lib/es6/src/utils/DatoDast.js",
     "swc": "swc ./src/components -o ./lib/es6/components --only *.js",
     "build-wasm": "wasm-pack build --target web",
     "start": "vite --cors",
