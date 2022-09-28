@@ -16,6 +16,7 @@ import {
   PerspectiveCamera,
   OctahedronGeometry,
   MeshNormalMaterial,
+  MeshBasicMaterial,
 } from "three";
 
 //@ts-ignore
@@ -46,13 +47,20 @@ camera.position.z = 5;
  * Custom materials
  *
  * */
+
+let darkMagicianTex = new TextureLoader().load("/dark-magician.jpg");
+const customMeshMat = new MeshBasicMaterial({
+  map: darkMagicianTex,
+});
+
 const customGLSLMaterial = new ShaderMaterial({
   side: DoubleSide,
   uniforms: {
+    tDiffuse: { value: null },
     uMouse: { value: new Vector2(-10, -10) },
     uTime: { value: 0.0 },
-    uTexture: {
-      value: new TextureLoader().load("/dark-magician.jpg"),
+    uVelocity: {
+      value: 0.0,
     },
     resolution: {
       value: new Vector2(1, window.innerWidth / window.innerHeight),
@@ -70,10 +78,10 @@ const customGLSLMaterial = new ShaderMaterial({
 let yulaPeopleModel: GLTF;
 
 let normalMat = new MeshNormalMaterial();
-let customPoly = new OctahedronGeometry(2.0);
-let errorMesh = new Mesh(customPoly, normalMat);
-
 const cardGrid = new PlaneGeometry(3.0, 5.0, 80, 80);
+let customPoly = new OctahedronGeometry(2.0);
+let errorMesh = new Mesh(cardGrid, customMeshMat);
+
 const yulaPeople = new GLTFLoader();
 // load the geo, display the loader.
 yulaPeople.load(
@@ -118,8 +126,9 @@ effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 const renderPass = new RenderPass(scene, camera);
 effectComposer.addPass(renderPass);
 
-// let customRenderPass = new ShaderPass({});
-// effectComposer.addPass(customRenderPass);
+let customRenderPass = new ShaderPass(customGLSLMaterial);
+customRenderPass.renderToScreen = true;
+effectComposer.addPass(customRenderPass);
 
 let targetSpeed = 0;
 const calcSpeed = () => {
@@ -133,7 +142,6 @@ const calcSpeed = () => {
 
   previousMouse.x = uMouse.x;
   previousMouse.y = uMouse.y;
-  console.log(speed);
 };
 
 document.addEventListener("mousemove", (ev: MouseEvent) => {
@@ -165,11 +173,12 @@ controls.enablePan = false;
 controls.enableRotate = false;
 
 function animation(time: number) {
-  errorMesh.rotation.x = Math.cos(uMouse.y * Math.PI * -1) * 0.5;
-  errorMesh.rotation.y = Math.cos(uMouse.x * Math.PI * -1) * -0.5;
+  // errorMesh.rotation.x = Math.cos(uMouse.y * Math.PI * -1) * 0.5;
+  // errorMesh.rotation.y = Math.cos(uMouse.x * Math.PI * -1) * -0.5;
 
-  customGLSLMaterial.uniforms.uTime.value = clock.getElapsedTime();
-  customGLSLMaterial.uniforms.uMouse.value = uMouse;
+  customGLSLMaterial.uniforms.uTime.value = clock.getElapsedTime() + 0.05;
+  customGLSLMaterial.uniforms.uVelocity.value = Math.min(targetSpeed, 0.05);
+  customGLSLMaterial.uniforms.uMouse.value = followMouse;
 
   effectComposer.render(time);
 }
