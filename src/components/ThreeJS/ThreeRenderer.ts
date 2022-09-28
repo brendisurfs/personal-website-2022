@@ -22,6 +22,7 @@ import {
 import vertexShader from "@shaders/dist.vert";
 //@ts-ignore
 import fragmentShader from "@shaders/dist.frag";
+import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 
 const sizes = {
   width: window.innerWidth,
@@ -102,6 +103,10 @@ yulaPeople.load(
  * RENDERER
  *
  * */
+
+let followMouse = new Vector2();
+let previousMouse = new Vector2();
+
 const renderer = new WebGLRenderer({ antialias: true });
 renderer.setSize(sizes.width, sizes.height);
 
@@ -109,12 +114,32 @@ renderer.setSize(sizes.width, sizes.height);
 const effectComposer = new EffectComposer(renderer);
 effectComposer.setSize(window.innerWidth, window.innerHeight);
 effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
 const renderPass = new RenderPass(scene, camera);
 effectComposer.addPass(renderPass);
+
+// let customRenderPass = new ShaderPass({});
+// effectComposer.addPass(customRenderPass);
+
+let targetSpeed = 0;
+const calcSpeed = () => {
+  const speed = Math.sqrt(
+    (previousMouse.x - uMouse.x) ** 2 + (previousMouse.y - uMouse.y) ** 2
+  );
+
+  targetSpeed -= 0.1 * (targetSpeed - speed);
+  followMouse.x -= 0.1 * (followMouse.x - uMouse.x);
+  followMouse.y -= 0.1 * (followMouse.y - uMouse.y);
+
+  previousMouse.x = uMouse.x;
+  previousMouse.y = uMouse.y;
+  console.log(speed);
+};
 
 document.addEventListener("mousemove", (ev: MouseEvent) => {
   uMouse.x = ev.clientX / window.innerWidth;
   uMouse.y = 1.0 - ev.clientY / window.innerHeight;
+  calcSpeed();
 });
 
 window.addEventListener("resize", () => {
