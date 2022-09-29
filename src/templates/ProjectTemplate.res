@@ -14,12 +14,9 @@ module DetailStyles = {
 
 module ProjectDetailLayout = {
   @react.component
-  let make = (~data: ProjectDetailQuery.ProjectDetailQuery_inner.t) => {
-    let innerData = data.componentProjectDetail->Option.getExn
-
-    let title = innerData.title->Option.getWithDefault("")
-    let {projectLinks, description} = innerData
-
+  let make = (~data: ProjectDetailQuery.ProjectDetailQuery_inner.t_componentProjectDetail) => {
+    let title = data.title->Option.getWithDefault("")
+    let {projectLinks, description} = data
     let sbMap =
       description
       ->Array.map(sb => {
@@ -36,8 +33,15 @@ module ProjectDetailLayout = {
 let make = (~slug) => {
   let innerDetail = switch ProjectDetailQuery.use({slug: slug}) {
   | {loading: true} => <div> {"loading"->React.string} </div>
-  | {error: Some(_error)} => <div> {"heck error"->React.string} </div>
-  | {data: Some(data)} => <ProjectDetailLayout data />
+  | {error: Some(_error)} => <div />
+  | {data: Some(data)} =>
+    switch data.componentProjectDetail {
+    | Some(detail) => <ProjectDetailLayout data=detail />
+    | None => {
+        RescriptReactRouter.push("/not-found")
+        <div />
+      }
+    }
   | {error: None} => <div> {"nothing here..."->React.string} </div>
   }
   <Layout> <div> innerDetail </div> </Layout>
