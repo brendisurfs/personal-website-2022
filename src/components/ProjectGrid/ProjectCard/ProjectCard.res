@@ -36,13 +36,13 @@ let make = (~project as p: t_workProjects_projects) => {
   let (isHover, setIsHover) = React.useState(() => false)
 
   let handleProjectClick = () => {
-    Js.log(p.title)
+    let cardUrl = BuildUrl.buildUrl(Option.getExn(p.title))
+    Js.log(cardUrl)
+    RescriptReactRouter.push(`/projects/${cardUrl}`)
   }
 
   let titleText = p.title->filterOption
   let descriptionText = p.description->filterOption
-
-  let cardUrl = BuildUrl.buildUrl(Option.getExn(p.title))
 
   <div className=Card.cardContainer>
     <div

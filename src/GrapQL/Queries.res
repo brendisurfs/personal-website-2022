@@ -77,3 +77,26 @@ query ProjectsQuery {
   }
 }
 `)
+
+module ProjectDetailQuery = %graphql(`
+query ProjectDetailQuery($slug: String!) {
+	componentProjectDetail(filter:{slug:{eq: $slug}}) {
+    id
+    title
+    projectLinks {
+      id
+      linkName
+      linkUrl
+    }
+    description {
+      id
+      reverse
+      text
+      switchbackImage {
+        id
+        url
+      }
+    }
+  }
+}
+`)
