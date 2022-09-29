@@ -20,12 +20,23 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
     | None => ()
     }
   }
+  /* module IntCmp = Belt.Id.MakeComparable({ */
+  /* type t = string */
+  /* let cmp = Pervasives.compare */
+  /* }) */
+  /* let totalTags = Belt.Set.make(~id=module(IntCmp)) */
 
   let writingDisplay = Belt.Array.map(comps, comp => {
     switch comp {
     | Some(c) =>
       let postDate = c.postDate->Belt.Option.getExn
       let jsonPostDate = postDate->Js.Json.stringify
+      let tags = Belt.Array.map(c.tags, tag => tag.tagTitle->Belt.Option.getWithDefault(""))
+      let tagsDomElements = Belt.Array.map(tags, tag => <div> {tag->React.string} </div>)
+      /* Belt.Array.forEach(tags, tag => { */
+      /* let _ = Belt.Set.add(totalTags, tag) */
+      /* }) */
+
       // formatted by taking away quotes.
       let formattedPostDate = Js.String2.replaceByRe(jsonPostDate, %re(`/"/g`), "")->React.string
       <div key={postDate->Js.String2.make}>
@@ -42,6 +53,6 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
   })
 
   <div className={ListStyle.container}>
-    <div className="list-items"> {writingDisplay->React.array} </div>
+    <div className="all-tags" /> <div className="list-items"> {writingDisplay->React.array} </div>
   </div>
 }
