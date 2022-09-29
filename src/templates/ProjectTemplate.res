@@ -25,11 +25,21 @@ module ProjectDetailLayout = {
       | _ => <Icons.NoIcon />
       }
     }
+
     let mappedLinks = Array.map(projectLinks, l => {
       let linkName = Option.getWithDefault(l.linkName, "")
       let url = Option.getWithDefault(l.linkUrl, "")
       let icon = iconPicker(linkName)
-      <> <a href={url} target="_blank" key={Js.String.make(l.id)}> icon </a> </>
+
+      <>
+        <a
+          style={ReactDOM.Style.make(~width="24px", ())}
+          href={url}
+          target="_blank"
+          key={Js.String.make(l.id)}>
+          icon
+        </a>
+      </>
     })->React.array
 
     let sbMap =

@@ -22,6 +22,10 @@ module PageQuery = %graphql(`
       }
       components {
         ...on ComponentBlogRecord {
+          tags {
+            id
+            tagTitle
+          }
           title
           postDate
           slug
