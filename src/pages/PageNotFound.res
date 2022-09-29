@@ -21,7 +21,7 @@ let make = () =>
   <Layout>
     <div className={ErrorStyles.container}>
       <div className={ErrorStyles.wrapper}>
-        <h3> {"404"->string} </h3> <div> {"Weird, nothing here. Want to go back?"->string} </div>
+        <h3> {"404"->string} </h3> <div> {"Weird, nothing here. Try another page."->string} </div>
       </div>
     </div>
   </Layout>
