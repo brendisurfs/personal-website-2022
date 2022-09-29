@@ -17,6 +17,12 @@ import {
   MeshBasicMaterial,
   MeshNormalMaterial,
   OctahedronGeometry,
+  Color,
+  MeshPhysicalMaterial,
+  RectAreaLight,
+  DirectionalLight,
+  MeshStandardMaterial,
+  AmbientLight,
 } from "three";
 
 //@ts-ignore
@@ -76,9 +82,16 @@ const customGLSLMaterial = new ShaderMaterial({
 let yulaPeopleModel: GLTF;
 let normalMat = new MeshNormalMaterial();
 const cardGrid = new PlaneGeometry(3.0, 5.0, 80, 80);
-let customPoly = new OctahedronGeometry(2.0);
-customPoly.scale(1, 2, 1);
-let errorMesh = new Mesh(customPoly, normalMat);
+let customPoly = new OctahedronGeometry(2.0, 16);
+//customPoly.scale(2, 1, 1);
+let errorMesh = new Mesh(customPoly, new MeshStandardMaterial());
+
+let light = new DirectionalLight("#ffffff", 0.8);
+light.position.set(0.25, 3, -2.25);
+scene.add(light);
+
+let envLight = new AmbientLight("#ffffff", 0.05);
+scene.add(envLight);
 
 const yulaPeople = new GLTFLoader();
 // load the geo, display the loader.
