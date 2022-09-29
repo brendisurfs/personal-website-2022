@@ -33,9 +33,6 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
       let jsonPostDate = postDate->Js.Json.stringify
       let tags = Belt.Array.map(c.tags, tag => tag.tagTitle->Belt.Option.getWithDefault(""))
       let tagsDomElements = Belt.Array.map(tags, tag => <div> {tag->React.string} </div>)
-      /* Belt.Array.forEach(tags, tag => { */
-      /* let _ = Belt.Set.add(totalTags, tag) */
-      /* }) */
 
       // formatted by taking away quotes.
       let formattedPostDate = Js.String2.replaceByRe(jsonPostDate, %re(`/"/g`), "")->React.string

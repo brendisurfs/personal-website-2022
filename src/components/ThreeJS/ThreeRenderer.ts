@@ -9,14 +9,14 @@ import {
   Clock,
   Vector2,
   DoubleSide,
-  PlaneGeometry,
   TextureLoader,
   WebGLRenderer,
+  PlaneGeometry,
   ShaderMaterial,
   PerspectiveCamera,
-  OctahedronGeometry,
-  MeshNormalMaterial,
   MeshBasicMaterial,
+  MeshNormalMaterial,
+  OctahedronGeometry,
 } from "three";
 
 //@ts-ignore
@@ -31,6 +31,9 @@ const sizes = {
 };
 
 const scene = new Scene();
+
+let followMouse = new Vector2();
+let previousMouse = new Vector2();
 let uMouse = new Vector2(0.0, 0.0);
 
 // CAMERA ---
@@ -40,14 +43,11 @@ const camera = new PerspectiveCamera(
   0.01,
   100
 );
-camera.position.z = 5;
+camera.position.z = 10;
 
 /**
- *
  * Custom materials
- *
  * */
-
 let darkMagicianTex = new TextureLoader().load("/dark-magician.jpg");
 const customMeshMat = new MeshBasicMaterial({
   map: darkMagicianTex,
@@ -71,16 +71,14 @@ const customGLSLMaterial = new ShaderMaterial({
 });
 
 /**
- *
  * GEOMETRY
- *
  * */
 let yulaPeopleModel: GLTF;
-
 let normalMat = new MeshNormalMaterial();
 const cardGrid = new PlaneGeometry(3.0, 5.0, 80, 80);
 let customPoly = new OctahedronGeometry(2.0);
-let errorMesh = new Mesh(cardGrid, customMeshMat);
+customPoly.scale(1, 2, 1);
+let errorMesh = new Mesh(customPoly, normalMat);
 
 const yulaPeople = new GLTFLoader();
 // load the geo, display the loader.
@@ -99,21 +97,13 @@ yulaPeople.load(
     console.log(progress);
   },
   error => {
-    console.error(error);
     scene.add(errorMesh);
   }
 );
 
-//
-
 /**
- *
  * RENDERER
- *
  * */
-
-let followMouse = new Vector2();
-let previousMouse = new Vector2();
 
 const renderer = new WebGLRenderer({ antialias: true });
 renderer.setSize(sizes.width, sizes.height);
@@ -132,15 +122,13 @@ effectComposer.addPass(renderPass);
 effectComposer.addPass(customRenderPass);
 
 let targetSpeed = 0;
-const calcSpeed = () => {
+const calculateVelocity = (): void => {
   const speed = Math.sqrt(
     (previousMouse.x - uMouse.x) ** 2 + (previousMouse.y - uMouse.y) ** 2
   );
-
   targetSpeed -= 0.1 * (targetSpeed - speed);
   followMouse.x -= 0.1 * (followMouse.x - uMouse.x);
   followMouse.y -= 0.1 * (followMouse.y - uMouse.y);
-
   previousMouse.x = uMouse.x;
   previousMouse.y = uMouse.y;
 };
@@ -148,7 +136,7 @@ const calcSpeed = () => {
 document.addEventListener("mousemove", (ev: MouseEvent) => {
   uMouse.x = ev.clientX / window.innerWidth;
   uMouse.y = 1.0 - ev.clientY / window.innerHeight;
-  calcSpeed();
+  calculateVelocity();
 });
 
 window.addEventListener("resize", () => {
@@ -156,8 +144,8 @@ window.addEventListener("resize", () => {
   sizes.height = window.innerHeight;
 
   camera.aspect = sizes.width / sizes.height;
-  camera.updateProjectionMatrix();
   renderer.setSize(sizes.width, sizes.height);
+  camera.updateProjectionMatrix();
 });
 
 export const renderCanvas = () => {
@@ -168,14 +156,18 @@ const clock = new Clock();
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.maxPolarAngle = Math.PI * 0.75;
 controls.minPolarAngle = Math.PI * 0.25;
+controls.enableRotate = false;
 controls.enableDamping = true;
 controls.enableZoom = false;
 controls.enablePan = false;
-controls.enableRotate = false;
+
+function meshFollowMouse(multiplier: number = 1): void {
+  errorMesh.rotation.x = Math.cos(uMouse.y * Math.PI * -1) * 0.5 * multiplier;
+  errorMesh.rotation.y = Math.cos(uMouse.x * Math.PI * -1) * -0.5 * multiplier;
+}
 
 function animation(time: number) {
-  // errorMesh.rotation.x = Math.cos(uMouse.y * Math.PI * -1) * 0.5;
-  // errorMesh.rotation.y = Math.cos(uMouse.x * Math.PI * -1) * -0.5;
+  meshFollowMouse(0.1);
 
   customGLSLMaterial.uniforms.uTime.value = clock.getElapsedTime() + 0.05;
   customGLSLMaterial.uniforms.uVelocity.value = Math.min(targetSpeed, 0.05);
