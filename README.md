@@ -12,6 +12,6 @@ The only small pain was getting GraphQL set up, but Apollo via ReScript is prett
 
 
 ### Previews
-<img width="1253" alt="image" src="https://user-images.githubusercontent.com/64713032/191373319-505c0ab9-93a5-4319-82eb-0f4830657c0a.png">
+<img width="1260" alt="image" src="https://user-images.githubusercontent.com/64713032/193151183-eb05c5de-8db3-4ef0-a9b5-8ba45127ba8b.png">
 
-<img width="1252" alt="image" src="https://user-images.githubusercontent.com/64713032/191373524-379391dd-d0cb-4d4d-947c-4fd856a004da.png">
+<img width="1251" alt="image" src="https://user-images.githubusercontent.com/64713032/193151277-ae74bc67-8abb-49c0-a816-4799b25b83bb.png">
