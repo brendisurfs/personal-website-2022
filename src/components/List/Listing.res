@@ -5,7 +5,6 @@ open FilterOption
 // listing component for writings home page, not detail.
 @react.component
 let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
-  // map over and filter out the data from poly variants
   let comps = list->Js.Array2.map(x =>
     switch x {
     | #ComponentBlogRecord(data) => Some(data)
@@ -20,18 +19,13 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
     | None => ()
     }
   }
-  /* module IntCmp = Belt.Id.MakeComparable({ */
-  /* type t = string */
-  /* let cmp = Pervasives.compare */
-  /* }) */
-  /* let totalTags = Belt.Set.make(~id=module(IntCmp)) */
 
   let writingDisplay = Belt.Array.map(comps, comp => {
     switch comp {
     | Some(c) =>
       let postDate = c.postDate->Belt.Option.getExn
       let jsonPostDate = postDate->Js.Json.stringify
-      let tags = Belt.Array.map(c.tags, tag => tag.tagTitle->Belt.Option.getWithDefault(""))
+      let tags = Belt.Array.map(c.tags, tag => Belt.Option.getWithDefault(tag.tagTitle, ""))
       let tagsDomElements = Belt.Array.map(tags, tag => <div> {tag->React.string} </div>)
 
       // formatted by taking away quotes.
