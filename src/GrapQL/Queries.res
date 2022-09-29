@@ -22,6 +22,10 @@ module PageQuery = %graphql(`
       }
       components {
         ...on ComponentBlogRecord {
+          tags {
+            id
+            tagTitle
+          }
           title
           postDate
           slug
@@ -66,6 +70,35 @@ query ProjectsQuery {
       projectImage {
         id
         responsiveImage {
+          alt
+          src
+          base64
+          bgColor
+          title
+        }
+      }
+    }
+  }
+}
+`)
+
+module ProjectDetailQuery = %graphql(`
+query ProjectDetailQuery($slug: String!) {
+	componentProjectDetail(filter:{slug:{eq: $slug}}) {
+    id
+    title
+    projectLinks {
+      id
+      linkName
+      linkUrl
+    }
+    description {
+      id
+      reverse
+      text
+      switchbackImage {
+      id
+      responsiveImage {
           alt
           src
           base64

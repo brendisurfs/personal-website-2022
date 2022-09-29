@@ -35,6 +35,14 @@ let make = (~project as p: t_workProjects_projects) => {
   // create state for image hover
   let (isHover, setIsHover) = React.useState(() => false)
 
+  // NOTE: Use UseEffect to fade out.
+
+  let handleProjectClick = () => {
+    let cardUrl = BuildUrl.buildUrl(Option.getExn(p.title))
+    Js.log(cardUrl)
+    RescriptReactRouter.push(`/projects/${cardUrl}`)
+  }
+
   let titleText = p.title->filterOption
   let descriptionText = p.description->filterOption
 
@@ -42,6 +50,7 @@ let make = (~project as p: t_workProjects_projects) => {
     <div
       onMouseEnter={_e => setIsHover(_ => true)}
       onMouseLeave={_e => setIsHover(_ => false)}
+      onClick={_ => handleProjectClick()}
       className=Card.textContainer>
       <div className=Card.title> {titleText} </div>
       <div className=Card.description> {descriptionText} </div>
