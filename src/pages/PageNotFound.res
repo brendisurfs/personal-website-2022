@@ -21,7 +21,13 @@ let make = () =>
   <Layout>
     <div className={ErrorStyles.container}>
       <div className={ErrorStyles.wrapper}>
-        <h3> {"404"->string} </h3> <div> {"Weird, nothing here. Try another page."->string} </div>
+        <h3> {"404"->string} </h3>
+        <div> {"Weird, nothing here. Try another page."->string} </div>
+        <div
+          onClick={_e => RescriptReactRouter.push("/home")}
+          style={ReactDOM.Style.make(~color="skyblue", ~padding="2rem", ~cursor="pointer", ())}>
+          {"go back home"->string}
+        </div>
       </div>
     </div>
   </Layout>

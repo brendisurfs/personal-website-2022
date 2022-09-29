@@ -7,8 +7,8 @@ module DetailStyles = {
   let container = css({
     "display": "flex",
     "margin": "4rem",
-    "justify-content": "center",
-    "flex-direction": "column",
+    "justifyContent": "center",
+    "flexDirection": "column",
     "color": "white",
   })
 }
@@ -18,6 +18,20 @@ module ProjectDetailLayout = {
   let make = (~data: ProjectDetailQuery.ProjectDetailQuery_inner.t_componentProjectDetail) => {
     let title = data.title->Option.getWithDefault("")
     let {projectLinks, description} = data
+
+    let iconPicker = icon => {
+      switch icon {
+      | "spotify" => <Icons.Spotify />
+      | _ => <Icons.NoIcon />
+      }
+    }
+    let mappedLinks = Array.map(projectLinks, l => {
+      let linkName = Option.getWithDefault(l.linkName, "")
+      let url = Option.getWithDefault(l.linkUrl, "")
+      let icon = iconPicker(linkName)
+      <> <a href={url} target="_blank" key={Js.String.make(l.id)}> icon </a> </>
+    })->React.array
+
     let sbMap =
       description
       ->Array.map(sb => {
@@ -26,7 +40,9 @@ module ProjectDetailLayout = {
       ->React.array
 
     open DetailStyles
-    <div className={container}> <h2> {title->React.string} </h2> sbMap </div>
+    <div className={container}>
+      <h2 className={"project-title"}> {title->React.string} </h2> mappedLinks sbMap
+    </div>
   }
 }
 

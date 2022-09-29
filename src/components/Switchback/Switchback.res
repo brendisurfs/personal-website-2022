@@ -36,7 +36,7 @@ let make = (
     `)}
     justify-content: space-between;
     padding-top: 2rem;
-    gap: 2rem;
+    gap: 8rem;
   `->rawCss
 
     let textContainer = `
