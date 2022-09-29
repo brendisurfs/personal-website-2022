@@ -6,7 +6,8 @@ module DetailStyles = {
   open Emotion
   let container = css({
     "display": "flex",
-    "padding": "2rem",
+    "margin": "4rem",
+    "justify-content": "center",
     "flex-direction": "column",
     "color": "white",
   })
