@@ -93,8 +93,14 @@ query ProjectDetailQuery($slug: String!) {
       reverse
       text
       switchbackImage {
-        id
-        url
+      id
+      responsiveImage {
+          alt
+          src
+          base64
+          bgColor
+          title
+        }
       }
     }
   }

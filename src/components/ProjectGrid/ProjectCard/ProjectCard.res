@@ -35,6 +35,8 @@ let make = (~project as p: t_workProjects_projects) => {
   // create state for image hover
   let (isHover, setIsHover) = React.useState(() => false)
 
+  // NOTE: Use UseEffect to fade out.
+
   let handleProjectClick = () => {
     let cardUrl = BuildUrl.buildUrl(Option.getExn(p.title))
     Js.log(cardUrl)
