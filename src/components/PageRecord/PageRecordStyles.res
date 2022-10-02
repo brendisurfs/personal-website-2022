@@ -12,9 +12,9 @@ module PageStyle = {
   `->rawCss
 
   let wrapper = `
-    width: 50%;
+    width: 75%;
     margin: auto;
-  `
+  `->rawCss
 
   let title = `
     text-transform: uppercase;
