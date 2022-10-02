@@ -44,6 +44,7 @@ module ListStyle = {
   `->rawCss
 
   let listItemsContainer = `
+  max-width: 75%;
   display: flex;
   gap: 2.5rem;
   flex-direction: column;

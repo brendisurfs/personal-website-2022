@@ -4,7 +4,11 @@ open FilterOption
 
 // listing component for writings home page, not detail.
 @react.component
-let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
+let make = (~val: PageQuery.PageQuery_inner.t_data) => {
+  let list = val.components
+  let pageSubhead = Belt.Option.getExn(val.pageSubtitle)
+  let subheadValue = pageSubhead
+
   let comps = list->Js.Array2.map(x =>
     switch x {
     | #ComponentBlogRecord(data) => Some(data)
@@ -58,6 +62,11 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
 
   <div className={ListStyle.container}>
     <div className="all-tags" />
+    <h2
+      className="subhead"
+      style={ReactDOM.Style.make(~color="white", ~padding="2rem", ~maxWidth="75%", ())}>
+      {subheadValue->React.string}
+    </h2>
     <div className={`list-items ${ListStyle.listItemsContainer}`}>
       {writingDisplay->React.array}
     </div>

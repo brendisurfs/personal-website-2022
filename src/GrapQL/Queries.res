@@ -17,6 +17,7 @@ module PageQuery = %graphql(`
   query PageQuery($pageSlug: String!) {
   	data: page(filter:{internalName:{eq: $pageSlug}}) {
       pageTitle
+      pageSubtitle
       pageText {
         value
       }
