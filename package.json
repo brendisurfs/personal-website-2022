@@ -8,7 +8,7 @@
     "build-wasm": "wasm-pack build --target web",
     "start": "vite --cors",
     "clean": "rescript clean",
-    "build": "./update_schema.sh && rescript build -with-deps && yarn compile-three && yarn compile-utils && yarn vite build",
+    "build": "update_schema.sh && rescript build -with-deps && yarn compile-three && yarn compile-utils && yarn vite build",
     "watch": "rescript build -w"
   },
   "keywords": [
