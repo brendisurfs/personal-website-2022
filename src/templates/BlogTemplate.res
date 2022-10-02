@@ -28,7 +28,7 @@ module BlogStyle = {
   let topContainer = `
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   max-width: 75%;
   `->rawCss
@@ -81,7 +81,7 @@ module BlogLayout = {
         let blogTitle = Option.getWithDefault(v.title, "")->React.string
 
         let blogTags = v.tags->Array.map(tag => {
-          let tagTitle = Option.getWithDefault(tag.tagTitle, "")
+          let tagTitle = Belt.Option.getWithDefault(tag.tagTitle, "")->Js.String2.replace(" ", "-")
           let fmtTag = ` #${tagTitle} `
           fmtTag->React.string
         })
@@ -97,7 +97,7 @@ module BlogLayout = {
         // -- view
         <>
           <div className={BlogStyle.topContainer}>
-            <div className={BlogStyle.backButton} onClick={_e => goBackToWriting()}>
+            <div id="go-back" className={BlogStyle.backButton} onClick={_e => goBackToWriting()}>
               <Arrow /> {"go back"->React.string}
             </div>
             <h2 className={BlogStyle.title}> blogTitle </h2>

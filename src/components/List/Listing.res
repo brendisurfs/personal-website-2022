@@ -25,25 +25,41 @@ let make = (~list: array<PageQuery.PageQuery_inner.t_data_components>) => {
     | Some(c) =>
       let postDate = c.postDate->Belt.Option.getExn
       let jsonPostDate = postDate->Js.Json.stringify
-      /* let tags = Belt.Array.map(c.tags, tag => Belt.Option.getWithDefault(tag.tagTitle, "")) */
-      /* let tagsDomElements = Belt.Array.map(tags, tag => <div> {tag->React.string} </div>) */
+      let tags = Belt.Array.map(c.tags, tag => {
+        let tagTitle = Belt.Option.getWithDefault(tag.tagTitle, "")->Js.String2.replace(" ", "-")
+        let fmtTag = `#${tagTitle}`
+        fmtTag
+      })
+
+      let tagColor = ReactDOM.Style.make(~color="orange", ())
+      let tagsDomElements = Belt.Array.map(tags, tag =>
+        <div style={tagColor} key={tag}> {tag->React.string} </div>
+      )
 
       // formatted by taking away quotes.
       let formattedPostDate = Js.String2.replaceByRe(jsonPostDate, %re(`/"/g`), "")->React.string
-      <div key={postDate->Js.String2.make}>
+
+      // -- view
+      <div key={postDate->Js.String2.make} className={ListStyle.blogItemWrapper}>
         <div
           className={ListStyle.listItem}
-          key={Belt.Option.getWithDefault(c.slug, "")}
+          key={Belt.Option.getExn(c.slug)}
           onClick={x => handleClickBlogTitle(x, c.slug)}>
-          <h3> {c.title->filterOption} </h3> <div> {formattedPostDate} </div>
+          <h3 style={ReactDOM.Style.make(~margin="0", ())}> {c.title->filterOption} </h3>
+          <div> {formattedPostDate} </div>
         </div>
-        <div className="bottom-border" />
+        <div className={`tag-list ${ListStyle.tagContainer}`}> {tagsDomElements->React.array} </div>
+        <div className={ListStyle.bottomBorder} />
       </div>
+
     | None => ""->React.string
     }
   })
 
   <div className={ListStyle.container}>
-    <div className="all-tags" /> <div className="list-items"> {writingDisplay->React.array} </div>
+    <div className="all-tags" />
+    <div className={`list-items ${ListStyle.listItemsContainer}`}>
+      {writingDisplay->React.array}
+    </div>
   </div>
 }
