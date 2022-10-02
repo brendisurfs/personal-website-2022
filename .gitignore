@@ -42,3 +42,4 @@ wasm-pack.log
 
 
 bun.lockb
+dist/
