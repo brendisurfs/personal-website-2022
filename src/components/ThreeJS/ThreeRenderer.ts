@@ -17,12 +17,10 @@ import {
   MeshBasicMaterial,
   MeshNormalMaterial,
   OctahedronGeometry,
-  Color,
-  MeshPhysicalMaterial,
-  RectAreaLight,
   DirectionalLight,
   MeshStandardMaterial,
   AmbientLight,
+  Vector3,
 } from "three";
 
 //@ts-ignore
@@ -90,7 +88,10 @@ let light = new DirectionalLight("#ffffff", 0.8);
 light.position.set(0.25, 3, -2.25);
 scene.add(light);
 
-let envLight = new AmbientLight("#ffffff", 0.05);
+let envLight = new DirectionalLight("#ffffff", 0.15);
+envLight.lookAt(new Vector3(0, 0, 0));
+envLight.position.set(-0.25, -3, -1.25);
+
 scene.add(envLight);
 
 const yulaPeople = new GLTFLoader();
