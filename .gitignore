@@ -28,6 +28,7 @@ lib/bs
 graphql_schema.json
 bun.lockb
 /lib/
+update_schema.sh
 .env
 
 # RUST / WASM
