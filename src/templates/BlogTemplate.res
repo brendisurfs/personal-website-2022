@@ -16,7 +16,7 @@ module BlogStyle = {
 
   let wrapper = `
     display: flex;
-    max-width: 50%;
+    max-width: 75%;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -28,7 +28,9 @@ module BlogStyle = {
   let topContainer = `
   display: flex;
   flex-direction: column;
-  max-width: 50%;
+  align-items: center;
+  justify-content: center;
+  max-width: 75%;
   `->rawCss
 
   let title = `
@@ -77,11 +79,13 @@ module BlogLayout = {
     switch data.componentBlog {
     | Some(v) => {
         let blogTitle = Option.getWithDefault(v.title, "")->React.string
+
         let blogTags = v.tags->Array.map(tag => {
           let tagTitle = Option.getWithDefault(tag.tagTitle, "")
           let fmtTag = ` #${tagTitle} `
           fmtTag->React.string
         })
+
         let inner = v.body->Option.getExn
         let unwrappedData = renderDast(inner)
 
