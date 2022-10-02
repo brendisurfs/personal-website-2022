@@ -67,10 +67,14 @@ module DotIcon = {
 
 @react.component
 let make = (~topbarList) => {
+  let changeToHome = () => {
+    changeUrl("home")
+  }
+
   <nav
     className={Nav.container} style={ReactDOM.Style.make(~zIndex="999", ~background="black", ())}>
     <div className={Nav.innerWrapper}>
-      <div className={Nav.title} onClick={_e => changeUrl("home")}>
+      <div className={Nav.title} onClick={_e => changeToHome()}>
         <h1> {"Brendancreates"->React.string} </h1>
       </div>
       <DotIcon menuItems={topbarList} />

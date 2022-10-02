@@ -13,6 +13,7 @@ module App = {
     | list{"projects", projectSlug} => <ProjectTemplate slug={projectSlug} />
     | _ => <PageNotFound />
     }
-    <TransitionContext.Provider value=TransitionContext.Unloaded> page </TransitionContext.Provider>
+
+    <TransitionContext.Provider value=TransitionContext.Loaded> page </TransitionContext.Provider>
   }
 }

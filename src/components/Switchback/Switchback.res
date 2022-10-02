@@ -1,7 +1,6 @@
 open Belt
 open React
 open Queries
-open WebApi
 
 @react.component
 let make = (

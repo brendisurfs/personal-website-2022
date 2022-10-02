@@ -19,6 +19,7 @@ module ProjectDetailLayout = {
     let title = data.title->Option.getWithDefault("")
     let {projectLinks, description} = data
 
+    // TODO: Finish the icon picker.
     let iconPicker = icon => {
       switch icon {
       | "spotify" => <Icons.Spotify />
@@ -31,15 +32,13 @@ module ProjectDetailLayout = {
       let url = Option.getWithDefault(l.linkUrl, "")
       let icon = iconPicker(linkName)
 
-      <>
-        <a
-          style={ReactDOM.Style.make(~width="24px", ())}
-          href={url}
-          target="_blank"
-          key={Js.String.make(l.id)}>
-          icon
-        </a>
-      </>
+      <a
+        style={ReactDOM.Style.make(~width="24px", ())}
+        href={url}
+        target="_blank"
+        key={Js.String.make(l.id)}>
+        icon
+      </a>
     })->React.array
 
     let sbMap =

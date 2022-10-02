@@ -1,6 +1,8 @@
 module TransitionContext = {
-  type transition = Loaded | Unloaded
-  let transitionContext = React.createContext(Unloaded)
+  type transitionType = Loaded | Unloaded
+  type transitionStateType = {status: transitionType}
+
+  let transitionContext = React.createContext(Loaded)
 
   module Provider = {
     let provider = React.Context.provider(transitionContext)
