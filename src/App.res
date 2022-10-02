@@ -1,16 +1,18 @@
+open Context
 module App = {
   @react.component
   let make = () => {
     let url = RescriptReactRouter.useUrl()
 
-    switch url.path {
+    let page = switch url.path {
     | list{} | list{"home"} => <Home />
     | list{"projects"} => <Projects />
-    | list{"projects", projectSlug} => <ProjectTemplate slug={projectSlug} />
     | list{"writing"} => <Blog />
-    | list{"writing", slug} => <BlogTemplate slug />
     | list{"about"} => <About />
+    | list{"writing", slug} => <BlogTemplate slug />
+    | list{"projects", projectSlug} => <ProjectTemplate slug={projectSlug} />
     | _ => <PageNotFound />
     }
+    <TransitionContext.Provider value=TransitionContext.Unloaded> page </TransitionContext.Provider>
   }
 }
