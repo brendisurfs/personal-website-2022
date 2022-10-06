@@ -32,5 +32,8 @@ let make = () => {
   })
 
   open StylesThreeCanvas
-  <div className={CanvasStyles.container} ref={ReactDOM.Ref.domRef(canvas)} />
+  <div>
+    <div className={CanvasStyles.container} ref={ReactDOM.Ref.domRef(canvas)} />
+    <div style={ReactDOM.Style.make(~height="24rem", ())} />
+  </div>
 }

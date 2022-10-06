@@ -8,7 +8,6 @@ module CanvasStyles = {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
   top: 0;
   left: 0;
   `->rawCss
