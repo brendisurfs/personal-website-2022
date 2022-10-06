@@ -1,4 +1,4 @@
-open WebApi
+open WebBindings
 open ChangeUrl
 open MobileNavStyles
 
@@ -15,14 +15,14 @@ module MapIcon = {
       Document.document->Document.getElementById("mobile-menu-map-icon")->Js.Option.getExn
 
     // handles a click outside the mobile menu so that it will still close.
-    let fnHandleClickOutside = (evt: WebApi.eventType) => {
+    let fnHandleClickOutside = (evt: WebBindings.eventType) => {
       let eventTarget = evt.target
       if eventTarget != menuButtonValue && isOpen {
         setIsOpen(_prev => false)
       }
     }
 
-    let _ = WebApi.Window.addWindowEventListener("mouseup", fnHandleClickOutside)
+    let _ = WebBindings.Window.addWindowEventListener("mouseup", fnHandleClickOutside)
 
     @react.component
     let mobileMenuPopoverItem = {

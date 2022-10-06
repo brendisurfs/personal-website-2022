@@ -1,4 +1,3 @@
-open WebApi
 open ChangeUrl
 open NavbarStyles
 
@@ -9,22 +8,33 @@ module DotIcon = {
   let make = (~menuItems) => {
     let (isOpen, setIsOpen) = React.useState(_ => false)
 
+    // use effect to listen and modify scrolling for the menu
+    React.useEffect1(() => {
+      let body = Webapi.Dom.HtmlDocument.body
+      switch isOpen {
+      | true => Js.log("is open")
+      | false => Js.log("is closed")
+      }
+      None
+    }, [isOpen])
+
     let handleClick = () => {
       setIsOpen(_prev => !isOpen)
     }
 
+    open WebBindings
     let menuButtonValue =
       Document.document->Document.getElementById("menu-dot-icon")->Js.Option.getExn
 
     // handles a click outside the mobile menu so that it will still close.
-    let fnHandleClickOutside = (evt: WebApi.eventType) => {
+    let fnHandleClickOutside = (evt: WebBindings.eventType) => {
       let eventTarget = evt.target
       if eventTarget != menuButtonValue && isOpen {
         setIsOpen(_prev => false)
       }
     }
 
-    let _ = WebApi.Window.addWindowEventListener("mouseup", fnHandleClickOutside)
+    let _ = WebBindings.Window.addWindowEventListener("mouseup", fnHandleClickOutside)
 
     @react.component
     let mobileMenuPopoverItem = {

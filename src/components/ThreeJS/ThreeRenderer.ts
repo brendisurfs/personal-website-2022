@@ -19,8 +19,8 @@ import {
   OctahedronGeometry,
   DirectionalLight,
   MeshStandardMaterial,
-  AmbientLight,
   Vector3,
+  TorusGeometry,
 } from "three";
 
 //@ts-ignore
@@ -28,6 +28,8 @@ import vertexShader from "@shaders/dist.vert";
 //@ts-ignore
 import fragmentShader from "@shaders/dist.frag";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
+
+const SCROLL_MULT: number = 0.001;
 
 const sizes = {
   width: window.innerWidth,
@@ -40,7 +42,9 @@ let followMouse = new Vector2();
 let previousMouse = new Vector2();
 let uMouse = new Vector2(0.0, 0.0);
 
-// CAMERA ---
+/*
+ *  CAMERA
+ *  */
 const camera = new PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
@@ -49,11 +53,19 @@ const camera = new PerspectiveCamera(
 );
 camera.position.z = 10;
 
+let scrollY = window.scrollY;
+
+window.addEventListener("scroll", () => {
+  scrollY = window.scrollY;
+  camera.position.y = scrollY * -0.006;
+  newMesh.rotation.y = scrollY * SCROLL_MULT;
+});
+
 /**
  * Custom materials
  * */
 let darkMagicianTex = new TextureLoader().load("/dark-magician.jpg");
-const customMeshMat = new MeshBasicMaterial({
+const darkMagicianMat = new MeshStandardMaterial({
   map: darkMagicianTex,
 });
 
@@ -80,10 +92,22 @@ const customGLSLMaterial = new ShaderMaterial({
 let yulaPeopleModel: GLTF;
 let normalMat = new MeshNormalMaterial();
 const cardGrid = new PlaneGeometry(3.0, 5.0, 80, 80);
+
+// first Sphere Mesh
 let customPoly = new OctahedronGeometry(2.0, 16);
-//customPoly.scale(2, 1, 1);
 let errorMesh = new Mesh(customPoly, new MeshStandardMaterial());
 
+// second mesh
+const newMesh = new Mesh(cardGrid, normalMat);
+newMesh.position.y = -12;
+newMesh.rotation.y = 5;
+
+const darkMagicianMesh = new Mesh(cardGrid, normalMat);
+darkMagicianMesh.position.y = -5;
+
+/*
+ * LIGHTING
+ */
 let light = new DirectionalLight("#ffffff", 0.8);
 light.position.set(0.25, 3, -2.25);
 scene.add(light);
@@ -111,15 +135,14 @@ yulaPeople.load(
     console.log(progress);
   },
   error => {
-    scene.add(errorMesh);
+    scene.add(errorMesh, newMesh, darkMagicianMesh);
   }
 );
 
 /**
  * RENDERER
  * */
-
-const renderer = new WebGLRenderer({ antialias: true });
+const renderer = new WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(sizes.width, sizes.height);
 
 // POST PROCESSING
@@ -182,6 +205,8 @@ function meshFollowMouse(multiplier: number = 1): void {
 
 function animation(time: number) {
   meshFollowMouse(0.1);
+
+  // animate camera.
 
   customGLSLMaterial.uniforms.uTime.value = clock.getElapsedTime() + 0.05;
   customGLSLMaterial.uniforms.uVelocity.value = Math.min(targetSpeed, 0.05);

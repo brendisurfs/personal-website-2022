@@ -1,15 +1,18 @@
 @module("./ThreeRenderer.js") external renderTarget: unit => unit = "renderTarget"
 @module("./ThreeRenderer.js") external renderCanvas: unit => Dom.element = "renderCanvas"
 
-module WebApi = {
-  module Element = {
-    @send external appendChild: (Dom.element, Dom.element) => unit = "appendChild"
-  }
-
-  module Document = {
-    @val external document: Dom.element = "document"
-    @get external body: Dom.element => Dom.element = "body"
-    @send external getElementById: (Dom.element, string) => option<Dom.element> = "getElementById"
+module LargeDiv = {
+  @react.component
+  let make = () => {
+    let divStyle = ReactDOM.Style.make(
+      ~color="white",
+      ~minHeight="50vh",
+      ~textAlign="center",
+      ~alignItems="center",
+      ~justifyContent="center",
+      (),
+    )
+    <div style={divStyle}> {""->React.string} </div>
   }
 }
 
@@ -17,7 +20,7 @@ module WebApi = {
 let make = () => {
   let canvas = React.useRef(Js.Nullable.null)
 
-  open WebApi
+  open WebBindings
   React.useEffect(_ => {
     let innerCanvas = canvas.current->Js.Nullable.toOption
     switch innerCanvas {
@@ -34,6 +37,9 @@ let make = () => {
   open StylesThreeCanvas
   <div>
     <div className={CanvasStyles.container} ref={ReactDOM.Ref.domRef(canvas)} />
-    <div style={ReactDOM.Style.make(~height="24rem", ())} />
+    <LargeDiv />
+    <LargeDiv />
+    <LargeDiv />
+    <LargeDiv />
   </div>
 }
