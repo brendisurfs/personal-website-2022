@@ -1,3 +1,5 @@
+open Belt
+open Webapi
 open ChangeUrl
 open NavbarStyles
 
@@ -8,13 +10,23 @@ module DotIcon = {
   let make = (~menuItems) => {
     let (isOpen, setIsOpen) = React.useState(_ => false)
 
+    // this is gross but oh well.
+    let changeIfOpened = %raw(`
+    function changeDomStyle(isOpened) {
+      let {body} = document;
+      if (isOpened) {
+        body.style.overflow = "hidden";
+        console.log(body.style.overflow)
+      } else {
+        body.style.overflowX = "hiden";
+        body.style.overflowY = "";
+        console.log(body.style.overflow)
+      }
+    }
+    `)
     // use effect to listen and modify scrolling for the menu
     React.useEffect1(() => {
-      let body = Webapi.Dom.HtmlDocument.body
-      switch isOpen {
-      | true => Js.log("is open")
-      | false => Js.log("is closed")
-      }
+      let _ = changeIfOpened(isOpen)
       None
     }, [isOpen])
 
