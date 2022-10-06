@@ -8,19 +8,17 @@ import {
   Scene,
   Clock,
   Vector2,
+  Vector3,
   DoubleSide,
   TextureLoader,
   WebGLRenderer,
   PlaneGeometry,
   ShaderMaterial,
   PerspectiveCamera,
-  MeshBasicMaterial,
   MeshNormalMaterial,
   OctahedronGeometry,
   DirectionalLight,
   MeshStandardMaterial,
-  Vector3,
-  TorusGeometry,
 } from "three";
 
 //@ts-ignore
@@ -29,7 +27,7 @@ import vertexShader from "@shaders/dist.vert";
 import fragmentShader from "@shaders/dist.frag";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 
-const SCROLL_MULT: number = 0.001;
+const SCROLL_MULT: number = 0.0005;
 
 const sizes = {
   width: window.innerWidth,
@@ -203,6 +201,10 @@ function meshFollowMouse(multiplier: number = 1): void {
   errorMesh.rotation.y = Math.cos(uMouse.x * Math.PI * -1) * -0.5 * multiplier;
 }
 
+screen.orientation.onchange = () => {
+  console.log(screen.orientation.type);
+};
+
 function animation(time: number) {
   meshFollowMouse(0.1);
 
@@ -222,3 +224,10 @@ export const renderTarget = () => {
 };
 
 // animation update
+// MOBILE ONLY
+let prevTouch = new Vector2();
+window.ontouchmove = ev => {
+  uMouse.x = ev.targetTouches.item(0)?.clientX! / window.innerWidth;
+  uMouse.y = 1.0 - ev.targetTouches.item(0)?.clientY! / window.innerHeight;
+  calculateVelocity();
+};

@@ -15,7 +15,6 @@
     "rescript-apollo-client",
     "@reasonml-community/graphql-ppx",
     "bs-css",
-    "rescript-webapi",
     "bs-fetch",
     "bs-css-emotion",
     "@ryyppy/rescript-promise"

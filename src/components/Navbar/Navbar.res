@@ -1,5 +1,4 @@
 open Belt
-open Webapi
 open ChangeUrl
 open NavbarStyles
 
