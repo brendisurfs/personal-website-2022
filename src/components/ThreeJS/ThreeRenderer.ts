@@ -201,12 +201,12 @@ function meshFollowMouse(multiplier: number = 1): void {
   errorMesh.rotation.y = Math.cos(uMouse.x * Math.PI * -1) * -0.5 * multiplier;
 }
 
-screen.orientation.onchange = () => {
-  console.log(screen.orientation.type);
-};
-
 function animation(time: number) {
   meshFollowMouse(0.1);
+
+  if (navigator.userAgent.toLowerCase().match(/mobile/i)) {
+    handleTouchMove();
+  }
 
   // animate camera.
 
@@ -225,9 +225,21 @@ export const renderTarget = () => {
 
 // animation update
 // MOBILE ONLY
-let prevTouch = new Vector2();
-window.ontouchmove = ev => {
-  uMouse.x = ev.targetTouches.item(0)?.clientX! / window.innerWidth;
-  uMouse.y = 1.0 - ev.targetTouches.item(0)?.clientY! / window.innerHeight;
-  calculateVelocity();
-};
+function checkForMobile() {
+  if (navigator.userAgent.toLowerCase().match(/mobile/i)) {
+  }
+}
+
+function handleTouchMove() {
+  window.ontouchmove = (ev: TouchEvent) => {
+    uMouse.x = ev.targetTouches.item(0)?.clientX! / window.innerWidth;
+    uMouse.y = 1.0 - ev.targetTouches.item(0)?.clientY! / window.innerHeight;
+    calculateVelocity();
+  };
+
+  window.ontouchend = (ev: TouchEvent) => {
+    uMouse.x = 1 / window.innerWidth;
+    uMouse.y = 1.0 - window.innerHeight;
+    calculateVelocity();
+  };
+}
